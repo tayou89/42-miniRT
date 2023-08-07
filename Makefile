@@ -7,7 +7,8 @@ LIBFT = ./libft/libft.a
 LIBFT_DIR = ./libft
 COMMON_FILE = main
 PARSING_FILE = parse_data \
-			   ft_parsing_error
+			   parse_file parse_line \
+			   ft_parsing_error ft_parsing_free
 
 COMMON_SRC = $(addprefix ./common/, $(addsuffix .c, $(COMMON_FILE)))
 PARSING_SRC = $(addprefix ./parsing/, $(addsuffix .c, $(PARSING_FILE)))

@@ -4,6 +4,16 @@
 # define TRUE 1
 # define FALSE 0
 
+typedef struct s_count
+{
+	int	ambient;
+	int	camera;
+	int	light;
+	int	sp;
+	int	pl;
+	int	cy;
+}	t_count;
+
 typedef struct s_vec3
 {
 	double	x;
@@ -72,11 +82,13 @@ typedef struct s_ray
 
 typedef struct s_data
 {
+	t_count		count;
 	t_camera	camera;
 	t_light		light;
 	t_ambient	ambient;
-	t_sp		sp;
-	t_pl		pl;
-	t_cy		cy;
+	t_sp		*sp;
+	t_pl		*pl;
+	t_cy		*cy;
 }t_data;
+
 #endif
