@@ -2,14 +2,9 @@
 
 int	main(void)
 {
-	long long	number;
-	double		double_number;
-	double		total;
+	double	double_number;
 
-	number = 99999999999;
-	double_number = 0.99;
-	total = number + double_number;
-	printf("total: %.15f\n", total);
-	printf("total: %.2f\n", total);
+	double_number = 99999999999.5555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555;
+	printf("double_number: %.20f\n", double_number);
 	return (0);
 }

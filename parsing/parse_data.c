@@ -3,16 +3,16 @@
 static void	check_argc(int argc);
 static void	check_file_extension(char *file_name);
 static char	*get_file_extension(char *file_name);
-static int	open_file(char *file_name);
+static int	open_file(char *file_name, t_parsing *data);
 
 void	parse_data(int argc, char **argv, t_data *all)
 {
-	int	fd;
+	t_parsing	data;
 
 	check_argc(argc);
 	check_file_extension(argv[1]);
-	fd = open_file(argv[1]);
-	parse_file(fd, all);
+	open_file(argv[1], &parsing);
+	parse_file(parsing, all);
 }
 
 static void	check_argc(int argc)
@@ -54,12 +54,9 @@ static char	*get_file_extension(char *file_name)
 	return (&file_name[dot_index]);
 }
 
-static int	open_file(char *file_name)
+static int	open_file(char *file_name, t_parsing *data)
 {
-	int	fd;
-
-	fd = open(file_name, O_RDONLY);
+	data->file.fd = open(file_name, O_RDONLY);
 	if (data->file.fd < 0)
 		ft_parsing_error(OPEN_ERROR, 1);
-	return (fd);
 }

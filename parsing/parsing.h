@@ -23,11 +23,34 @@
 # define PLANE				4
 # define CYLINDER			5
 
-void	parse_data(int argc, char **argv, t_data *all);
-void	parse_file(int fd, t_data *all);
-void	parse_line(char *line, t_data *all);
+typedef struct s_line
+{
+	char	**info;
+	int		identifier;
+}	t_line;
 
-void	ft_parsing_error(int error_number, int exit_number);
+typedef struct s_file
+{
+	int		fd;
+	char	*line;
+}	t_file;
+
+typedef struct s_parsing
+{
+	t_file	file;
+	t_line	line;
+}	t_parsing;
+
+void	parse_data(int argc, char **argv, t_data *all);
+void	parse_file(t_parsing *data, t_data *all);
+void	parse_line(t_parsing *data, t_data *all);
+
+void	check_identifier(t_parsing *data, t_data *all);
+
+void	ft_parsing_error(int error_number, int exit_number, t_parsing *data);
+
+void	free_every_parsing_data(t_parsing *data);
 void	*free_2d_array(void **array);
+void	*free_1d_array(void *array);
 
 #endif
