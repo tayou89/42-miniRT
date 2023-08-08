@@ -2,13 +2,14 @@
 
 int	main(void)
 {
-	float	number;
-	int		i;
+	long long	number;
+	double		double_number;
+	double		total;
 
-	number = 0.1547;
-	i = 3;
-
-	number = number + i;
-	printf("number: %.2f\n", number);
+	number = 99999999999;
+	double_number = 0.99;
+	total = number + double_number;
+	printf("total: %.15f\n", total);
+	printf("total: %.2f\n", total);
 	return (0);
 }
