@@ -23,6 +23,12 @@
 # define PLANE				4
 # define CYLINDER			5
 
+typedef struct s_info
+{
+	char	**rgb;
+	char	**xyz;
+}	t_info;
+
 typedef struct s_line
 {
 	char	**info;
@@ -39,6 +45,7 @@ typedef struct s_parsing
 {
 	t_file	file;
 	t_line	line;
+	t_info	info
 }	t_parsing;
 
 void	parse_data(int argc, char **argv, t_data *all);
@@ -48,6 +55,9 @@ void	parse_line(t_parsing *data, t_data *all);
 void	check_identifier(t_parsing *data, t_data *all);
 
 void	ft_parsing_error(int error_number, int exit_number, t_parsing *data);
+
+char	**get_splitted_array(char *array, char seperator, t_parsing *data);
+int		get_array_count(void **array);		
 
 void	free_every_parsing_data(t_parsing *data);
 void	*free_2d_array(void **array);

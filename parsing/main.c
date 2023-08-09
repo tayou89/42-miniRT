@@ -2,9 +2,13 @@
 
 int	main(void)
 {
-	double	double_number;
+	t_parsing	data;
+	char		*string;
 
-	double_number = 99999999999.5555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555;
-	printf("double_number: %.20f\n", double_number);
+	string = "255,255,255";
+	data.info.rgb = ft_split(string, ',');
+	if (data.info.rgb == (void *) 0)
+		perror("");
+	data.info.rgb = 
 	return (0);
 }

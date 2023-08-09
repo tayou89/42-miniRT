@@ -28,6 +28,9 @@ static void	initialize_data(t_parsing *data, t_data *all)
 	all->count.pl = 0;
 	all->count.cy = 0;
 	data->file.line = (void *) 0;
+	data->line.info = (void *) 0;
+	data->info.rgb = (void *) 0;
+	data->info.xyz = (void *) 0;
 }
 
 static char	*remove_newline(char *line)

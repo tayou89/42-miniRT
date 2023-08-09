@@ -4,8 +4,12 @@ void	free_every_parsing_data(t_parsing *data)
 {
 	if (data->file.line != (void *) 0)
 		data->file.line = free_1d_array((void *) data->file.line);
-	if (data->line.string != (void *) 0)
-		data->line.string = free_2d_array((void *) data->line.string);
+	if (data->line.info != (void *) 0)
+		data->line.info = free_2d_array((void *) data->line.info);
+	if (data->info.rgb != (void *) 0)
+		data->info.rgb = free_2d_array((void *) data->info.rgb);
+	if (data->info.xyz != (void *) 0)
+		data->info.xyz = free_2d_array((void *) data->info.xyz);
 }
 
 void	*free_2d_array(void **array)
