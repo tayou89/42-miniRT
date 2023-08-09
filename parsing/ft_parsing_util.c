@@ -25,3 +25,19 @@ int	get_array_count(void **array)
 	array_count = i;
 	return (array_count);
 }
+
+int	get_sign(int *index, char *string)
+{
+	if (string[*index] == '-')
+	{
+		(*index)++;
+		return (-1);
+	}
+	else if (string[*index] == '+')
+	{
+		(*index)++;
+		return (1);
+	}
+	else
+		return (1);
+}

@@ -9,6 +9,8 @@ void	get_element_information(t_parsing *data, t_data *all)
 
 void	get_ambient_information(t_parsing *data, t_data *all)
 {
-	all->ambient.ratio = ft_atod(data->info[1], data);
+	all->ambient.ratio = get_ratio_data(data->info[1], data);
 	all->ambient.color = get_color_data(data->info[2], data);
 }
+
+
