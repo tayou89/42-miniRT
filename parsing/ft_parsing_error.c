@@ -2,14 +2,14 @@
 
 static char	*get_error_message(int error_number);
 
-void	ft_parsing_error(int error_number, int exit_number, t_parsing *data)
+void	ft_parsing_error(int error_number, int exit_number, t_parsing *parsing)
 {
 	char	*error_message;
 
 	error_message = get_error_message(error_number);
 	printf("Error\n");
 	printf("%s\n", error_message);
-	free_every_parsing_data(data);
+	free_every_parsing_data(parsing);
 	exit(exit_number);
 }
 

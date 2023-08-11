@@ -1,44 +1,26 @@
 #include "parsing.h"
 
-static void	initialize_count(t_parsing *data);
 static char	*remove_newline(char *line);
 
-void	parse_file(t_parsing *data, t_data *all)
+void	parse_file(t_parsing *parsing)
 {
-	initialize_data(all);
-	data->file.line = get_next_line(data->file.fd);
-	if (data->file.line == (void *) 0)
-		ft_parsing_error(MALLOC_ERROR, 1);
-	while (data->file.line != (void *) 0)
+	parsing->file.line = get_next_line(parsing->file.fd);
+	if (parsing->file.line == (void *) 0)
+		ft_parsing_error(MALLOC_ERROR, 1, parsing);
+	while (parsing->file.line != (void *) 0)
 	{
-		remove_newline(data->file.line);
-		parse_line(data, all);
-		free(data->file.line);
-		line = get_next_line(data->file.fd);
+		parsing->file.line = remove_newline(parsing->file.line);
+		parse_line(parsing);
+		free(parsing->file.line);
+		line = get_next_line(parsing->file.fd);
 	}
-	close(data->file.fd);
-}
-
-static void	initialize_data(t_parsing *data, t_data *all)
-{
-	all->count.ambient = 0;
-	all->count.camera = 0;
-	all->count.light = 0;
-	all->count.sp = 0;
-	all->count.pl = 0;
-	all->count.cy = 0;
-	data->file.line = (void *) 0;
-	data->line.info = (void *) 0;
-	data->info.rgb = (void *) 0;
-	data->info.xyz = (void *) 0;
+	close(parsing->file.fd);
 }
 
 static char	*remove_newline(char *line)
 {
-	char	*line;
 	int		i;
 
-	line = data->file.line;
 	i = 0;
 	while (line[i] != '\0')
 	{

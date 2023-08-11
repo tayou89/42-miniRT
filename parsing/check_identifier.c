@@ -1,76 +1,75 @@
 #include "parsing.h"
 
-static int		get_line_identifier(char *identifier, t_parsing *data);
-static t_count	count_element(int identifier, t_count count);
-static void		check_element_exception(t_parsing *datat_data *all);
-static void		check_information_count(int	identifier, char **split);
+static void	get_line_identifier(char *identifier, t_parsing *data);
+static void	count_element(int identifier, t_data *data);
+static void	check_element_exception(t_parsing *datat_data *all);
+static void	check_information_count(int	id, char **info, t_parsing *parsing);
 
-void	check_identifier(t_parsing *data, t_data *all)
+void	check_identifier(t_parsing *parsing)
 {
-	data->line.identifier = get_line_identifier(data->line.info[0], data);
-	all->count = count_element(data->line.identifier, all->count);
-	check_element_exception(all->count, data);
-	check_information_count(identifier, data->line.info, data);
+	get_line_identifier(data->line.info[0], parsing);
+	count_element(parsing->line.identifier, &parsing->data);
+	check_element_exception(parsing->data.count, parsing);
+	check_information_count(identifier, parsing->line.info, parsing);
 }
 
-static int	get_line_identifier(char *identifier, t_parsing *data)
+static void	get_line_identifier(char *identifier, t_parsing *parsing)
 {
 	int	identifier_size;
 
 	identifier_size = ft_strlen(identifier);
 	if (ft_strncmp("A", identifier, identifier_size) == 0)
-		return (AMBIENT);
+		parsing->line.identifer = AMBIENT;
 	else if (ft_strncmp("C", identifier, identifier_size) == 0)
-		return (CAMERA);
+		parsing->line.identifer = CAMERA;
 	else if (ft_strncmp("L", identifier, identifier_size) == 0)
-		return (LIGHT);
+		parsing->line.identifer = LIGHT;
 	else if (ft_strncmp("sp", identifier, identifier_size) == 0)
-		return (SPHERE);
+		parsing->line.identifer = SPHERE;
 	else if (ft_strncmp("pl", identifier, identifier_size) == 0)
-		return (PLANE);
+		parsing->line.identifer = PLANE;
 	else if (ft_strncmp("cy", identifier, identifier_size) == 0)
-		return (CYLINDER);
+		parsing->line.identifer = CYLINDER;
 	else
-		ft_parsing_error(DATA_ERROR, 0, data);
+		ft_parsing_error(DATA_ERROR, 0, parsing);
 }
 
-static t_count	count_element(int identifier, t_count count)
+static void	count_element(int identifier, t_data *data)
 {
 	if (identifier == AMBIENT)
-		count.ambient++;
+		data->count.ambient++;
 	else if (identifier == CAMERA)
-		count.camera++;
+		data->count.camera++;
 	else if (identifier == LIGHT)
-		count.light++;
+		data->count.light++;
 	else if (identifier == SPHERE)
-		count.sp++;
+		data->count.sp++;
 	else if (identifier == PLANE)
-		count.pl++;
+		data->count.pl++;
 	else if (identifier == CYLINDER)
-		count.cy++;
-	return (count);
+		data->count.cy++;
 }
 
-static void	check_element_exception(t_count count, t_parsing *data)
+static void	check_element_exception(t_count count, t_parsing *parsing)
 {
 	if (count.ambient > 1 || count.camera > 1 || count.light > 1)
-		ft_parsing_error(DATA_ERROR, 0, data);
+		ft_parsing_error(DATA_ERROR, 0, parsing);
 	if (count.sp < 0 || count.pl < 0 || count.cy < 0)
-		ft_parsing_error(DATA_ERROR, 0, data);
+		ft_parsing_error(DATA_ERROR, 0, parsing);
 }
 
-static void	check_information_count(t_parsing *data)
+static void	check_information_count(int id, char **info, t_parsing *parsing)
 {
 	int	identifier;
 	int	info_count;
 
-	identifier = data->line.identifier;
-	info_count = get_array_count((void *) data->line.info);
+	identifier = id;
+	info_count = get_array_count((void *) info);
 	if ((identifier == AMBIENT || identifier == CAMERA) && info_count != 3)
-		ft_parsing_error(DATA_ERROR, 0, data);
+		ft_parsing_error(DATA_ERROR, 0, parsing);
 	else if ((identifier == LIGHT || identifier == SPHERE
 			|| identifier == PLANE) && info_count != 4)
-		ft_parsing_error(DATA_ERROR, 0, data);
+		ft_parsing_error(DATA_ERROR, 0, parsing);
 	else if (identifier == CYLINDER && info_count != 6)
-		ft_parsing_error(DATA_ERROR, 0, data);
+		ft_parsing_error(DATA_ERROR, 0, parsing);
 }

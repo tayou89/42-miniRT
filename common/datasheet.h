@@ -9,75 +9,76 @@ typedef struct s_count
 	int	ambient;
 	int	camera;
 	int	light;
-	int	sp;
-	int	pl;
-	int	cy;
+	int	sphere;
+	int	plane;
+	int	cylinder;
 }	t_count;
 
-typedef struct s_vec3
+typedef struct s_vec
 {
 	double	x;
 	double	y;
 	double	z;
-}t_vec3;
-typedef t_vec3	t_point3;
+}t_vec;
+typedef t_vec	t_point;
 
-typedef struct s_color3
+typedef struct s_color
 {
 	int	r;
 	int	g;
 	int	b;
-}t_color3;
+}t_color;
 
 typedef struct s_sphere
 {
-	t_point3	center;
-	t_color3	color;
-	double		diameter;
-	double		radius;
-}t_sp;
+	t_point	center;
+	t_color	color;
+	double	diameter;
+	double	radius;
+	struct s_sphere	*next;
+}t_sphere;
 
 typedef struct s_plane
 {
-	t_point3	center;
-	t_vec3		normal;
-	t_color3	color;
-}t_pl;
+	t_point	center;
+	t_vec	vecter;
+	t_color	color;
+}t_plane;
 
 typedef struct s_cylinder
 {
-	t_point3	center;
-	t_vec3		normal;
-	t_color3	color;
-	double		diameter;
-	double		radius;
-	double		height;
-}t_cy;
+	t_point	center;
+	t_vec	vector;
+	t_color	color;
+	double	diameter;
+	double	radius;
+	double	height;
+}t_cylinder;
 
 typedef struct s_ambient
 {
 	double		ratio;
-	t_color3	color;
+	t_color		color;
 }t_ambient;
 
 typedef struct s_camera
 {
-	t_point3	view_point;
-	t_vec3		normal;
+	t_point		view_point;
+	t_vec		vector;
 	int			fov;
 }t_camera;
 
 typedef struct s_light
 {
-	t_point3	point;
-	double		ratio;
-	t_color3	color;
+	t_point	point;
+	double	ratio;
+	t_color	color;
 }t_light;
 
 typedef struct s_ray
 {
-	t_point3	point;
-	t_color3	color;
+	t_point	point;
+	t_color	color;
 }t_ray;
 
 typedef struct s_data
@@ -86,9 +87,9 @@ typedef struct s_data
 	t_camera	camera;
 	t_light		light;
 	t_ambient	ambient;
-	t_sp		*sp;
-	t_pl		*pl;
-	t_cy		*cy;
+	t_sphere	*sphere;
+	t_plane		*plane;
+	t_cylinder	*cylinder;
 }t_data;
 
 #endif

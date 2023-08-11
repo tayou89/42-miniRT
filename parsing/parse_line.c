@@ -2,9 +2,9 @@
 
 static void	get_line_string(t_parsing *data)
 
-void	parse_line(t_parsing *data, t_data *all)
+void	parse_line(t_parsing *parsing)
 {
-	data->line.info = get_splitted_array(data->file.line, ' ', data);
-	check_identifier(data, all);
-	get_element_information(data, all);
+	parsing->line.info = get_splitted_array(parsing->file.line, ' ', parsing);
+	check_identifier(parsing);
+	get_element_information(parsing);
 }

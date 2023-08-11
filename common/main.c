@@ -2,8 +2,8 @@
 
 int	main(int argc, char **argv)
 {
-	t_data	all;
+	t_data	data;
 
-	parse_data(argc, argv, &all);
+	data = parse_data(argc, argv);
 	return (0);
 }

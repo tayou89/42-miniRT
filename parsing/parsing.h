@@ -46,13 +46,14 @@ typedef struct s_parsing
 	t_file	file;
 	t_line	line;
 	t_info	info;
+	t_data	data;
 }	t_parsing;
 
-void	parse_data(int argc, char **argv, t_data *all);
-void	parse_file(t_parsing *data, t_data *all);
-void	parse_line(t_parsing *data, t_data *all);
+void	parse_data(int argc, char **argv);
+void	parse_file(t_parsing *parsing);
+void	parse_line(t_parsing *parsing);
 
-void	check_identifier(t_parsing *data, t_data *all);
+void	check_identifier(t_parsing *parsing);
 
 int		get_integer(char *string, t_parsing *data);
 double	get_double(char *string, t_parsing *data);
@@ -66,7 +67,7 @@ char	**get_splitted_array(char *array, char seperator, t_parsing *data);
 int		get_array_count(void **array);
 int		get_sign(int *index, char *string);
 
-void	ft_parsing_error(int error_number, int exit_number, t_parsing *data);
+void	ft_parsing_error(int error_number, int exit_number, t_parsing *parsing);
 void	free_every_parsing_data(t_parsing *data);
 void	*free_2d_array(void **array);
 void	*free_1d_array(void *array);
