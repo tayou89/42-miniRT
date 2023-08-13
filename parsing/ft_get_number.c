@@ -4,18 +4,18 @@ static int		get_number(char *string, int sign, t_parsing *data);
 static int		check_string_is_real_number(char *string, int index);
 static double	get_decimal(char *string);
 
-int	get_integer(char *string, t_parsing *data)
+int	get_integer(char *string, t_parsing *parsing)
 {
 	int	integer;
 	int	sign;
 	int	index;
 
 	if (string == (void *) 0)
-		ft_parsing_error(DATA_ERROR, 0, data);
+		ft_parsing_error(DATA_ERROR, 0, parsing);
 	index = 0;
 	sign = get_sign(&index, string);
 	if (ft_isdigit(string[index]) == FALSE)
-		ft_parsing_error(DATA_ERROR, 0, data);
+		ft_parsing_error(DATA_ERROR, 0, parsing);
 	integer = get_number(&string[index], sign, data);
 	return (integer);
 }

@@ -31,29 +31,34 @@ typedef struct s_color
 
 typedef struct s_sphere
 {
-	t_point	center;
-	t_color	color;
-	double	diameter;
-	double	radius;
+	t_point			center;
+	t_color			color;
+	double			diameter;
+	double			radius;
 	struct s_sphere	*next;
-}t_sphere;
+	struct s_sphere	*prev;
+}t_sp;
 
 typedef struct s_plane
 {
-	t_point	center;
-	t_vec	vecter;
-	t_color	color;
-}t_plane;
+	t_point			center;
+	t_vec			normal;
+	t_color			color;
+	struct s_plane	*next;
+	struct s_plane	*prev;
+}t_pl;
 
 typedef struct s_cylinder
 {
-	t_point	center;
-	t_vec	vector;
-	t_color	color;
-	double	diameter;
-	double	radius;
-	double	height;
-}t_cylinder;
+	t_point				center;
+	t_vec				normal;
+	t_color				color;
+	double				diameter;
+	double				radius;
+	double				height;
+	struct s_cylinder	*next;
+	struct s_cylinder	*prev;
+}t_cy;
 
 typedef struct s_ambient
 {
@@ -64,7 +69,7 @@ typedef struct s_ambient
 typedef struct s_camera
 {
 	t_point		view_point;
-	t_vec		vector;
+	t_vec		normal;
 	int			fov;
 }t_camera;
 
@@ -87,9 +92,9 @@ typedef struct s_data
 	t_camera	camera;
 	t_light		light;
 	t_ambient	ambient;
-	t_sphere	*sphere;
-	t_plane		*plane;
-	t_cylinder	*cylinder;
+	t_sp		*sphere;
+	t_pl		*plane;
+	t_cy		*cylinder;
 }t_data;
 
 #endif

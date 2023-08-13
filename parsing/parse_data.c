@@ -31,8 +31,13 @@ static void	initialize_data(t_parsing *parsing)
 	parsing->data.cylinder = (void *) 0;
 	parsing->file.line = (void *) 0;
 	parsing->line.info = (void *) 0;
-	parsing->info.rgb = (void *) 0;
-	parsing->info.xyz = (void *) 0;
+	parsing->info.color = (void *) 0;
+	parsing->info.coordinate = (void *) 0;
+	parsing->info.vector = (void *) 0;
+	parsing->info.ratio = (void *) 0;
+	parsing->info.diameter = (void *) 0;
+	parsing->info.height = (void *) 0;
+	parsing->info.fov = (void *) 0;
 }
 
 static void	check_file_extension(char *file_name, t_parsing *parsing)
