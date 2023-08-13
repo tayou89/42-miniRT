@@ -1,6 +1,7 @@
 #include "parsing.h"
 
 static char	*remove_newline(char *line);
+static void	check_data_count(t_count count, t_parsing *parsing);
 
 void	parse_file(t_parsing *parsing)
 {
@@ -15,6 +16,7 @@ void	parse_file(t_parsing *parsing)
 		line = get_next_line(parsing->file.fd);
 	}
 	close(parsing->file.fd);
+	check_data_count(parsing->data.count, parsing);
 }
 
 static char	*remove_newline(char *line)
@@ -29,4 +31,11 @@ static char	*remove_newline(char *line)
 		i++;
 	}
 	return (line);
+}
+
+static void check_data_count(t_count count, t_parsing *parsing)
+{
+	if (count.ambient == 0 || count.camera == 0 || count.light == 0
+		|| count.sphere == 0 || count.plane == 0 || count.cylinder == 0)
+		ft_parsing_error(DATA_ERROR, 0, parsing);
 }
