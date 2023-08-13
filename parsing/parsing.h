@@ -67,7 +67,7 @@ typedef struct s_parsing
 	t_data	data;
 }	t_parsing;
 
-void	parse_data(int argc, char **argv);
+t_data	parse_data(int argc, char **argv);
 void	parse_file(t_parsing *parsing);
 void	parse_line(t_parsing *parsing);
 
