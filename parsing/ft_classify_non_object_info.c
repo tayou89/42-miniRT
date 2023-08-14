@@ -3,7 +3,7 @@
 void	classify_ambient_information(char **info, t_parsing *parsing)
 {
 	check_information_count(info, AMBIENT, parsing);
-	parsing->info.ratio = get_duplicated_string(info[0]);
+	parsing->info.ratio = get_duplicated_string(info[0], parsing);
 	parsing->info.color = get_splitted_array(info[1], ',', parsing);
 	check_information_count(parsing->info.color, COLOR, parsing);
 }
@@ -23,7 +23,7 @@ void	classify_light_information(char **info, t_parsing *parsing)
 	check_information_count(info, LIGHT, parsing);
 	parsing->info.coordinate = get_splitted_array(info[0], ',', parsing);
 	check_information_count(parsing->info.coordinate, COORDINATE, parsing);
-	parsing->info.ratio = get_duplicated_string(info[1]);
+	parsing->info.ratio = get_duplicated_string(info[1], parsing);
 	parsing->info.color = get_splitted_array(info[2], ',', parsing);
 	check_information_count(parsing->info.color, COLOR, parsing);
 }

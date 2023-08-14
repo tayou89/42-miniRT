@@ -10,7 +10,7 @@ t_sp	*make_sphere_node(t_info *info, t_parsing *parsing)
 	sphere->center = get_coordinate_data(info->coordinate, parsing);
 	sphere->color = get_color_data(info->color, parsing);
 	sphere->diameter = get_double(info->diameter, parsing);
-	sphere->radius = diameter / 2;
+	sphere->radius = sphere->diameter / 2;
 	sphere->next = (void *) 0;
 	sphere->prev = (void *) 0;
 	return (sphere);

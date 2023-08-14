@@ -1,52 +1,47 @@
-#include "parsing."
+#include "parsing.h"
 
-static int	get_identifier(char *identifier, t_parsing *parsing);
+static void	get_identifier(char *identifier, t_parsing *parsing);
 static void	count_element(int identifier, t_data *data);
 static void	check_element_exception(t_count count, t_parsing *parsing);
 
 void	classify_element_information(char *line, t_parsing *parsing)
 {
-	int	identifier;
-
 	parsing->line.info = get_splitted_array(line, ' ', parsing);
-	identifier = get_identifier(parsing->line.info[0], parsing);
-	parsing->info.identifier = identifier;
-	count_element(identifier, &parsing->data);
+	get_identifier(parsing->line.info[0], parsing);
+	count_element(parsing->info.identifier, &parsing->data);
 	check_element_exception(parsing->data.count, parsing);
-	if (identifier == AMBIENT)
+	if (parsing->info.identifier == AMBIENT)
 		classify_ambient_information(&parsing->line.info[1], parsing);
-	else if (identifier == CAMERA)
+	else if (parsing->info.identifier == CAMERA)
 		classify_camera_information(&parsing->line.info[1], parsing);
-	else if (identifier == LIGHT)
+	else if (parsing->info.identifier == LIGHT)
 		classify_light_information(&parsing->line.info[1], parsing);
-	else if (identifier == SPHERE)
+	else if (parsing->info.identifier == SPHERE)
 		classify_sphere_information(&parsing->line.info[1], parsing);
-	else if (identifier == PLANE)
+	else if (parsing->info.identifier == PLANE)
 		classify_plane_information(&parsing->line.info[1], parsing);
-	else if (identifier == CYLINDER)
+	else if (parsing->info.identifier == CYLINDER)
 		classify_cylinder_information(&parsing->line.info[1], parsing);
 	parsing->line.info = free_2d_array((void *) parsing->line.info);
 }
 
-static int	get_identifier(char *identifier, t_parsing *parsing)
+static void	get_identifier(char *identifier, t_parsing *parsing)
 {
 	int	identifier_size;
 
-	if (identifier == (void *) 0)
-		ft_parsing_error(DATA_ERROR, 0, parsing);
 	identifier_size = ft_strlen(identifier);
 	if (ft_strncmp("A", identifier, identifier_size) == 0)
-		return (AMBIENT);
+		parsing->info.identifier = AMBIENT;
 	else if (ft_strncmp("C", identifier, identifier_size) == 0)
-		return (CAMERA);
+		parsing->info.identifier = CAMERA;
 	else if (ft_strncmp("L", identifier, identifier_size) == 0)
-		return (LIGHT);
+		parsing->info.identifier = LIGHT;
 	else if (ft_strncmp("sp", identifier, identifier_size) == 0)
-		return (SPHERE);
+		parsing->info.identifier = SPHERE;
 	else if (ft_strncmp("pl", identifier, identifier_size) == 0)
-		return (PLANE);
+		parsing->info.identifier = PLANE;
 	else if (ft_strncmp("cy", identifier, identifier_size) == 0)
-		return (CYLINDER);
+		parsing->info.identifier = CYLINDER;
 	else
 		ft_parsing_error(DATA_ERROR, 0, parsing);
 }

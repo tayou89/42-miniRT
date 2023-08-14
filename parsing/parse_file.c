@@ -1,6 +1,7 @@
 #include "parsing.h"
 
 static char	*remove_newline(char *line);
+static int	check_line_if_substance_exist(char *line);
 static void	check_data_count(t_count count, t_parsing *parsing);
 
 void	parse_file(t_parsing *parsing)
@@ -11,9 +12,10 @@ void	parse_file(t_parsing *parsing)
 	while (parsing->file.line != (void *) 0)
 	{
 		parsing->file.line = remove_newline(parsing->file.line);
-		parse_line(parsing);
+		if (check_line_if_substance_exist(parsing->file.line) == TRUE)
+			parse_line(parsing);
 		free(parsing->file.line);
-		line = get_next_line(parsing->file.fd);
+		parsing->file.line = get_next_line(parsing->file.fd);
 	}
 	close(parsing->file.fd);
 	check_data_count(parsing->data.count, parsing);
@@ -31,6 +33,19 @@ static char	*remove_newline(char *line)
 		i++;
 	}
 	return (line);
+}
+
+static int	check_line_if_substance_exist(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i] == ' ')
+		i++;
+	if (line[i] == '\0')
+		return (FALSE);
+	else
+		return (TRUE);
 }
 
 static void check_data_count(t_count count, t_parsing *parsing)

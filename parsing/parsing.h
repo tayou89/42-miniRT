@@ -75,7 +75,7 @@ void	classify_element_information(char *line, t_parsing *parsing);
 void	classify_ambient_information(char **info, t_parsing *parsing);
 void	classify_camera_information(char **info, t_parsing *parsing);
 void	classify_light_information(char **info, t_parsing *parsing);
-void	classify_sphere__information(char **info, t_parsing *parsing);
+void	classify_sphere_information(char **info, t_parsing *parsing);
 void	classify_plane_information(char **info, t_parsing *parsing);
 void	classify_cylinder_information(char **info, t_parsing *parsing);
 
@@ -111,17 +111,21 @@ int		check_vector_range(double data);
 
 char	**get_splitted_array(char *array, char seperator, t_parsing *parsing);
 char	*get_duplicated_string(char *string, t_parsing *parsing);
+void	check_information_count(char **string, int type, t_parsing *parsing);
 int		get_array_count(void **array);
 int		get_sign(int *index, char *string);
 
 void	ft_parsing_error(int error_number, int exit_number, t_parsing *parsing);
 void	free_every_parsing_data(t_parsing *parsing);
+void	free_info_data(t_info *info);
 void	*free_2d_array(void **array);
 void	*free_1d_array(void *array);
 
-void	free_object_list(t_data *data)
+void	free_object_list(t_data *data);
 t_sp	*free_sphere_list(t_sp *sphere);
 t_pl	*free_plane_list(t_pl *plane);
 t_cy	*free_cylinder_list(t_cy *cylinder);
+
+void	print_data(t_data *data);
 
 #endif

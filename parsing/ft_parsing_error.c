@@ -9,6 +9,7 @@ void	ft_parsing_error(int error_number, int exit_number, t_parsing *parsing)
 	error_message = get_error_message(error_number);
 	printf("Error\n");
 	printf("%s\n", error_message);
+	printf("error_identifier: %d\n", parsing->info.identifier);
 	free_every_parsing_data(parsing);
 	exit(exit_number);
 }

@@ -14,7 +14,7 @@ PARSING_FILE = parse_data \
 			   ft_get_non_object_data ft_get_object_data \
 			   ft_get_data ft_make_object_node ft_add_object_node \
 			   ft_parsing_util ft_check_range ft_get_number \
-			   ft_parsing_error ft_parsing_free ft_free_object_list
+			   ft_parsing_error ft_parsing_free ft_free_object_list print_data
 
 COMMON_SRC = $(addprefix ./common/, $(addsuffix .c, $(COMMON_FILE)))
 PARSING_SRC = $(addprefix ./parsing/, $(addsuffix .c, $(PARSING_FILE)))

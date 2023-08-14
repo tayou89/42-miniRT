@@ -16,11 +16,11 @@ int	get_integer(char *string, t_parsing *parsing)
 	sign = get_sign(&index, string);
 	if (ft_isdigit(string[index]) == FALSE)
 		ft_parsing_error(DATA_ERROR, 0, parsing);
-	integer = get_number(&string[index], sign, data);
+	integer = get_number(&string[index], sign, parsing);
 	return (integer);
 }
 
-static int	get_number(char *string, int sign, t_parsing *data)
+static int	get_number(char *string, int sign, t_parsing *parsing)
 {
 	int	after_number;
 	int	before_number;
@@ -32,14 +32,14 @@ static int	get_number(char *string, int sign, t_parsing *data)
 	{
 		after_number = before_number * 10 + ((string[i] - '0') * sign);
 		if (after_number / 10 != before_number)
-			ft_parsing_error(DATA_ERROR, 0, data);
+			ft_parsing_error(DATA_ERROR, 0, parsing);
 		before_number = after_number;
 		i++;
 	}
 	return (after_number);
 }
 
-double	get_double(char *string, t_parsing *data)
+double	get_double(char *string, t_parsing *parsing)
 {
 	double	double_number;
 	int		integer;
@@ -48,12 +48,12 @@ double	get_double(char *string, t_parsing *data)
 	int		i;
 
 	if (string == (void *) 0)
-		ft_parsing_error(DATA_ERROR, 0, data);
+		ft_parsing_error(DATA_ERROR, 0, parsing);
 	i = 0;
 	sign = get_sign(&i, string);
 	if (check_string_is_real_number(string, i) == FALSE)
-		ft_parsing_error(DATA_ERROR, 0, data);
-	integer = get_integer(&string[i], data);
+		ft_parsing_error(DATA_ERROR, 0, parsing);
+	integer = get_integer(&string[i], parsing);
 	while (ft_isdigit(string[i]) == TRUE)
 		i++;
 	if (string[i++] == '\0')

@@ -4,7 +4,7 @@ void	get_element_data(t_info *info, t_parsing *parsing)
 {
 	int	identifier;
 
-	identifier = info.indentifier;
+	identifier = info->identifier;
 	if (identifier == AMBIENT)
 		get_ambient_data(&parsing->data, info, parsing);
 	else if (identifier == CAMERA)
@@ -17,5 +17,5 @@ void	get_element_data(t_info *info, t_parsing *parsing)
 		get_plane_data(&parsing->data, info, parsing);
 	else if (identifier == CYLINDER)
 		get_cylinder_data(&parsing->data, info, parsing);
-	free_info_data(info)
+	free_info_data(info);
 }
