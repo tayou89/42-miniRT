@@ -1,54 +1,37 @@
 #include "parsing.h"
 
-t_data	get_parsing_data(void)
-{
-	t_parsing	parsing;
-
-	parsing.data.sphere = (t_sphere *) malloc(sizeof(t_sphere));
-	parsing.data.sphere->radius = 20;
-	parsing.data.sphere->next = (t_sphere *) malloc(sizeof(t_sphere));
-	parsing.data.sphere->next->radius = 30;
-	parsing.data.sphere->next->next = (void *) 0;
-	return (parsing.data);
-}
-
-void	*free_data(void *data)
-{
-	t_sphere	*sphere;
-	t_sphere	*head;
-
-	sphere = (t_sphere *) data;
-	while (sphere != (void *) 0)
-	{
-		head = sphere;
-		sphere = sphere->next;
-		free(head);
-		head = (void *) 0;
-	}
-	return ((void *) 0);
-}
-
-void	leaks(void)
-{
-	system("leaks a.out");
-}
+#include <stdio.h>
 
 int	main(void)
 {
-	t_data	data;
+    int     i;
+    int     j;
+    double  r;
+    double  g;
+    double  b;
+    int     canvas_width;
+    int     canvas_height;
 
-	data = get_parsing_data();
-	if (data.sphere == (void *) 0)
-		printf("data.sphere is NULL.\n");
-	if (data.sphere->next == (void *) 0)
-		printf("data.sphere->next is NULL.\n");
-	printf("data.sphere->raidus: %.f\n", data.sphere->radius);
-	printf("data.sphere->next->raidus: %.f\n", data.sphere->next->radius);
-	data.sphere = free_data((void *) data.sphere);
-	if (data.sphere == (void *) 0)
-		printf("data.sphere is NULL.\n");
-	else
-		printf("data.sphere is not NULL.\n");
- 	atexit(leaks);
-	return (0);
+    //캔버스의 가로, 세로 픽셀값
+    canvas_width = 256;
+    canvas_height = 256;
+
+    // 랜더링
+    // P3 는 색상값이 아스키코드라는 뜻, 그리고 다음 줄은 캔버스의 가로, 세로 픽셀 수, 마지막은 사용할 색상값
+    printf("P3\n%d %d\n255\n", canvas_width, canvas_height);
+    j = canvas_height - 1;
+    while (j >= 0)
+    {
+        i = 0;
+        while (i < canvas_width)
+        {
+            r = (double)i / (canvas_width - 1);
+            g = (double)j / (canvas_height - 1);
+            b = 0.25;
+            printf("%d %d %d\n", (int)(255.999 * r), (int)(255.999 * g), (int)(255.999 * b));
+        ++i;
+        }
+    --j;
+    }
+    return (0);
 }
