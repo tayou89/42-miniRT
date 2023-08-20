@@ -5,7 +5,7 @@ static void	check_file_extension(char *file_name, t_parsing *parsing);
 static char	*get_file_extension(char *file_name);
 static void	open_file(char *file_name, t_parsing *parsing);
 
-t_data	parse_data(int argc, char **argv)
+void	parse_data(int argc, char **argv, t_data *data)
 {
 	t_parsing	parsing;
 
@@ -15,7 +15,7 @@ t_data	parse_data(int argc, char **argv)
 	check_file_extension(argv[1], &parsing);
 	open_file(argv[1], &parsing);
 	parse_file(&parsing);
-	return (parsing.data);
+	*data = parsing.data;
 }
 
 static void	initialize_data(t_parsing *parsing)

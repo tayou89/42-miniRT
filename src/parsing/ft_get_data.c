@@ -34,9 +34,9 @@ t_color	get_color_data(char **string, t_parsing *parsing)
 	return (color);
 }
 
-t_vec	get_vector_data (char **string, t_parsing *parsing)
+t_vec3	get_vector_data (char **string, t_parsing *parsing)
 {
-	t_vec	vector;
+	t_vec3	vector;
 	
 	vector.x = get_double(string[0], parsing);
 	vector.y = get_double(string[1], parsing);

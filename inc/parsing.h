@@ -1,8 +1,8 @@
 #ifndef PARSING_H
 # define PARSING_H
 
-# include "../common/datasheet.h"
-# include "../libft/libft.h"
+# include "datasheet.h"
+# include "../lib/libft/inc/libft.h"
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdio.h>
@@ -67,7 +67,7 @@ typedef struct s_parsing
 	t_data	data;
 }	t_parsing;
 
-t_data	parse_data(int argc, char **argv);
+void	parse_data(int argc, char **argv, t_data *data);
 void	parse_file(t_parsing *parsing);
 void	parse_line(t_parsing *parsing);
 
@@ -90,7 +90,7 @@ void	get_cylinder_data(t_data *data, t_info *info, t_parsing *parsing);
 double	get_ratio_data(char *string, t_parsing *parsing);
 int		get_fov_data(char *string, t_parsing *parsing);
 t_color	get_color_data(char **string, t_parsing *parsing);
-t_vec	get_vector_data(char **string, t_parsing *parsing);
+t_vec3	get_vector_data(char **string, t_parsing *parsing);
 t_point	get_coordinate_data(char **string, t_parsing *parsing);
 
 t_sp	*make_sphere_node(t_info *info, t_parsing *parsing);
