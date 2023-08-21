@@ -3,6 +3,7 @@
 
 # include "datasheet.h"
 # include "../lib/libft/inc/libft.h"
+# include "../lib/libminirt/inc/utils_vec.h"
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdio.h>

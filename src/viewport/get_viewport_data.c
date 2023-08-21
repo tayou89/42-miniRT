@@ -1,27 +1,44 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_viewport_data.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/21 13:38:00 by tayou             #+#    #+#             */
+/*   Updated: 2023/08/21 13:56:10 by tayou            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/viewport.h"
 
 void	get_viewport_data(t_data *data)
 {
-	get_viewport_width(data);
-	get_viewport_center(data);
+	t_camera	virtual_camera;
+	t_viewport	virtual_viewport;
+	t_vec3		diff;
+
+	make_virtual_camera(&virtual_camera, data->camera);
+	make_virtual_viewport(&virtual_viewport, virtual_camera);
 }
 
-void	get_viewport_width(t_data *data)
+void	make_virtual_camera(t_camera *virtual, t_camera origin)
 {
-	t_camera	camera;
-	double		tangent;
-
-	camera = data->camera;
-	tangent = tan(camera->fov / 2);
-	data->viewport.width = tangent * 2;
+	virtual->view_point = pset(0, 0, 0);
+	virtual->normal = vset(0, 0, 1);
+	virtual->fov = origin.fov;
 }
 
-void	get_viewport_center(t_data *data)
+void	make_virtual_viewport(t_viewport *virtual, t_camera temp)
 {
-	t_camera	camera;
-	t_vec3		camera_unit_vector;
+	double	focal_length;
 
-	camera = data->camera;
-	camera_unit_vector = vunit(camera->normal);
-	data->viewport.center = padd_v(camera->view_point, camera_unit_vector);
+	focal_length = 1;
+	virtual->width = get_viewport_width(temp->fov, focal_length);
+	virtual->height = get_viewport_height(virtual->width);
+	virtual->center = \
+	get_viewport_center(temp->view_point, temp->normal, focal_length);
+	virtual->left_top = \
+	pset((virtual->width / 2) * -1, 
 }
+

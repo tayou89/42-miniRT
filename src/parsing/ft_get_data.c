@@ -31,6 +31,7 @@ t_color	get_color_data(char **string, t_parsing *parsing)
 		|| check_rgb_range(color.g) == FALSE
 		|| check_rgb_range(color.b) == FALSE)
 		ft_parsing_error(DATA_ERROR, 0, parsing);
+
 	return (color);
 }
 
@@ -44,6 +45,8 @@ t_vec3	get_vector_data (char **string, t_parsing *parsing)
 	if (check_vector_range(vector.x) == FALSE
 		|| check_vector_range(vector.y) == FALSE
 		|| check_vector_range(vector.z) == FALSE)
+		ft_parsing_error(DATA_ERROR, 0, parsing);
+	if (vlen(vector) == 0)
 		ft_parsing_error(DATA_ERROR, 0, parsing);
 	return (vector);
 }

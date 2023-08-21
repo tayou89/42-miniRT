@@ -72,8 +72,10 @@ typedef struct s_ray
 
 typedef	struct s_viewport
 {
-	t_point	left_top;
+	double	width;
+	double	height;
 	t_point	center;
+	t_point	left_top;
 	t_vec3	right_vector;
 	t_vec3	down_vector;
 }t_viewport;
