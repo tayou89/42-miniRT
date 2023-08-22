@@ -3,8 +3,9 @@
 #include "mlx.h"
 #include "ftmlx.h"
 #include "initialize.h"
+#include "datasheet.h"
 
-int	main(int argv, char **argv)
+int	main(int argc, char **argv)
 {
 	t_mlx	mlx;
 	t_data	data;
