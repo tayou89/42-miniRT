@@ -14,10 +14,12 @@ bonus:
 
 clean:
 	make clean -C libft
-	make clean -C minilibx_mms_20210621
 	make clean -C libminirt
 
-fclean: clean
+fclean:
+	make fclean -C libft
+	make fclean -C libminirt
+	make clean -C minilibx_mms_20210621
 
 re:
 	make fclean
