@@ -6,20 +6,20 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 13:38:00 by tayou             #+#    #+#             */
-/*   Updated: 2023/08/21 13:56:10 by tayou            ###   ########.fr       */
+/*   Updated: 2023/08/22 21:57:14 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/viewport.h"
 
 void	get_viewport_data(t_data *data)
-{
+{ 
 	t_camera	virtual_camera;
 	t_viewport	virtual_viewport;
-	t_vec3		diff;
 
 	make_virtual_camera(&virtual_camera, data->camera);
 	make_virtual_viewport(&virtual_viewport, virtual_camera);
+	calculate_viewport_data(data, virtual_viewport, virtual_camera);
 }
 
 void	make_virtual_camera(t_camera *virtual, t_camera origin)
@@ -39,6 +39,40 @@ void	make_virtual_viewport(t_viewport *virtual, t_camera temp)
 	virtual->center = \
 	get_viewport_center(temp->view_point, temp->normal, focal_length);
 	virtual->left_top = \
-	pset((virtual->width / 2) * -1, 
+	pset((virtual->width / 2) * -1, virtual->height / 2, focal_length);
+	virtual->right_top = \
+	pset(virtual->width / 2, virtual->height / 2, focal_length);
+	virtual->left_bottom = \
+	pset((virtual->width / 2) * -1, (virtual->height / 2) * -1, focal_length);
 }
 
+void	calculate_viewport_data(t_data *data, t_viewport virtual, t_camera temp)
+{
+	t_viewport	viewport;
+	t_camera	camera;
+	t_diff		diff;
+
+	camera = data->camera;
+	diff.vector = vsub_v(camera.normal, temp.normal);
+	diff.point = vsub_v((t_vec3) camera.view_point, (t_vec3) temp.view_point);
+	viewport.width = virtual.width;
+	viewport.height = virtual.height;
+	viewport.left_top = get_viewport_corner((t_vec3) virtual.left_top, diff);
+	viewport.right_top = get_viewport_corner((t_vec3) virtual.right_top, diff);
+	viewport.left_bottom = \
+		get_viewport_corner((t_vec3) virtual.left_bottom, diff);
+	viewport.horizontal = \
+		vsub_v((t_vec3) viewport.left_top, (t_vec3) viewport.right_top);
+	viewport.vertical = \
+		vsub_v((t_vec3) viewport.left_top, (t_vec3) viewport.left_bottom);
+}
+
+t_point	get_viewport_corner(t_vec3 point, t_diff diff)
+{
+	t_vec3	corner_vector;
+	t_vec3	first_result;
+
+	first_result = vadd_v(point, diff.vector);
+	corner_vector = vadd_v(first_result, diff.point);
+	return ((t_point) corner_vector);
+}

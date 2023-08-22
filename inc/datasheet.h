@@ -76,8 +76,10 @@ typedef	struct s_viewport
 	double	height;
 	t_point	center;
 	t_point	left_top;
-	t_vec3	right_vector;
-	t_vec3	down_vector;
+	t_point	right_top;
+	t_point	left_bottom;
+	t_vec3	horizontal;
+	t_vec3	vertical;
 }t_viewport;
 
 typedef struct t_data
@@ -89,6 +91,6 @@ typedef struct t_data
 	t_pl		*plane;
 	t_cy		*cylinder;
 	t_viewport	viewport;
-}	t_data;
+}t_data;
 
 #endif

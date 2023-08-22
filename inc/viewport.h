@@ -3,7 +3,13 @@
 
 # include "datasheet.h"
 # include "initialize.h"
-# include "../lib/libminirt/inc/utils_vec.h"
-# include "../lib/libminirt/inc/utils_viewport.h"
+# include "utils_vec.h"
+# include "utils_viewport.h"
+
+typedef struct s_diff
+{
+	t_vec3	vector;
+	t_vec3	point;
+}	t_diff;
 
 #endif
