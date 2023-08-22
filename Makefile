@@ -87,6 +87,7 @@ clean:
 	$(RM) make_bonus
 
 fclean: clean
+	make fclean -C $(LIB_PATH)
 	$(RM) $(NAME)
 
 re:

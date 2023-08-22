@@ -3,23 +3,23 @@ NAME = miniRT_library
 all: $(NAME)
 
 $(NAME):
-	make -C libft
-	make -C minilibx_mms_20210621
-	make -C libminirt
+	make -C libft/
+	make -C minilibx_mms_20210621/
+	make -C libminirt/
 
 bonus:
-	make -C libft
-	make -C minilibx_mms_20210621
-	make bonus -C libminirt
+	make -C libft/
+	make -C minilibx_mms_20210621/
+	make bonus -C libminirt/
 
 clean:
-	make clean -C libft
-	make clean -C libminirt
+	make clean -C libft/
+	make clean -C libminirt/
 
 fclean:
-	make fclean -C libft
-	make fclean -C libminirt
-	make clean -C minilibx_mms_20210621
+	make fclean -C libft/
+	make fclean -C libminirt/
+	make clean -C minilibx_mms_20210621/
 
 re:
 	make fclean

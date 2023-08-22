@@ -32,7 +32,7 @@ $(OBJ_PATH)%.o : $(SRC_PATH)%.c
 clean:
 	$(RM) $(OBJ_PATH)
 
-fclean: clean
+fclean:
 	$(RM) $(NAME)
 
 re:
