@@ -1,5 +1,5 @@
 # FLAGS
-NAME = libminirt
+NAME = libminirt.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 ARFLAGS = rcs
