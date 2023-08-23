@@ -1,4 +1,4 @@
-#include "parsing.h"
+#include "utils_free.h"
 
 void	free_object_list(t_data *data)
 {
@@ -13,7 +13,7 @@ void	free_object_list(t_data *data)
 t_sp	*free_sphere_list(t_sp *sphere)
 {
 	t_sp	*head;
-	
+
 	while (sphere != (void *) 0)
 	{
 		head = sphere;
@@ -26,7 +26,7 @@ t_sp	*free_sphere_list(t_sp *sphere)
 t_pl	*free_plane_list(t_pl *plane)
 {
 	t_pl	*head;
-	
+
 	while (plane != (void *) 0)
 	{
 		head = plane;
@@ -39,7 +39,7 @@ t_pl	*free_plane_list(t_pl *plane)
 t_cy	*free_cylinder_list(t_cy *cylinder)
 {
 	t_cy	*head;
-	
+
 	while (cylinder != (void *) 0)
 	{
 		head = cylinder;

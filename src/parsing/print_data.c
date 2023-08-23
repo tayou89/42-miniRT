@@ -8,7 +8,7 @@ void	print_ambient_data(t_ambient ambient, int ambient_count);
 void	print_camera_data(t_camera camera, int camera_count);
 void	print_light_data(t_light light, int light_count);
 void	print_coordinate(char *title, t_point coordinate);
-void	print_vector(t_vec normal);
+void	print_vector(t_vec3 normal);
 void	print_color(t_color color);
 void	print_double(char *title, double data);
 
@@ -166,7 +166,7 @@ void	print_coordinate(char *title, t_point coordinate)
 	printf("%s.z: %.5f\n", title, coordinate.z);
 }
 
-void	print_vector(t_vec normal)
+void	print_vector(t_vec3 normal)
 {
 	printf("Normal vector.x: %.5f\n", normal.x);
 	printf("Normal vector.y: %.5f\n", normal.y);
@@ -175,9 +175,9 @@ void	print_vector(t_vec normal)
 
 void	print_color(t_color color)
 {
-	printf("Color.r: %d\n", color.r);
-	printf("Color.g: %d\n", color.g);
-	printf("Color.b: %d\n", color.b);
+	printf("Color.r: %f\n", color.x);
+	printf("Color.g: %f\n", color.y);
+	printf("Color.b: %f\n", color.z);
 }
 
 void	print_double(char *title, double data)

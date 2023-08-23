@@ -2,8 +2,10 @@
 # define PARSING_H
 
 # include "datasheet.h"
-# include "../lib/libft/inc/libft.h"
-# include "../lib/libminirt/inc/utils_vec.h"
+# include "libft.h"
+# include "utils_vec.h"
+# include "utils_free.h"
+# include "utils_range.h"
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdio.h>
@@ -105,11 +107,6 @@ t_cy	*add_cylinder_node(t_cy *new, t_cy *list);
 int		get_integer(char *string, t_parsing *parsing);
 double	get_double(char *string, t_parsing *parsing);
 
-int		check_rgb_range(int data);
-int		check_fov_range(int data);
-int		check_ratio_range(double data);
-int		check_vector_range(double data);
-
 char	**get_splitted_array(char *array, char seperator, t_parsing *parsing);
 char	*get_duplicated_string(char *string, t_parsing *parsing);
 void	check_information_count(char **string, int type, t_parsing *parsing);
@@ -117,15 +114,9 @@ int		get_array_count(void **array);
 int		get_sign(int *index, char *string);
 
 void	ft_parsing_error(int error_number, int exit_number, t_parsing *parsing);
+
 void	free_every_parsing_data(t_parsing *parsing);
 void	free_info_data(t_info *info);
-void	*free_2d_array(void **array);
-void	*free_1d_array(void *array);
-
-void	free_object_list(t_data *data);
-t_sp	*free_sphere_list(t_sp *sphere);
-t_pl	*free_plane_list(t_pl *plane);
-t_cy	*free_cylinder_list(t_cy *cylinder);
 
 void	print_data(t_data *data);
 

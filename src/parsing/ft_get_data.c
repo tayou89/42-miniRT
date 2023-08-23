@@ -24,12 +24,12 @@ t_color	get_color_data(char **string, t_parsing *parsing)
 {
 	t_color	color;
 
-	color.r = get_integer(string[0], parsing);
-	color.g = get_integer(string[1], parsing);
-	color.b = get_integer(string[2], parsing);
-	if (check_rgb_range(color.r) == FALSE
-		|| check_rgb_range(color.g) == FALSE
-		|| check_rgb_range(color.b) == FALSE)
+	color.x = get_integer(string[0], parsing);
+	color.y = get_integer(string[1], parsing);
+	color.z = get_integer(string[2], parsing);
+	if (check_rgb_range(color.x) == FALSE
+		|| check_rgb_range(color.y) == FALSE
+		|| check_rgb_range(color.z) == FALSE)
 		ft_parsing_error(DATA_ERROR, 0, parsing);
 
 	return (color);
