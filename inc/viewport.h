@@ -4,11 +4,21 @@
 # include "datasheet.h"
 # include "initialize.h"
 # include "utils_vec.h"
-# include "utils_viewport.h"
 
 # define FOCAL_LENGTH	1
 
-void	get_viewport_data(t_data *data);
-void	calculate_viewport_data(t_data *data, t_viewport normal, t_camera temp);
+void	get_viewport_data(t_viewport *viewport, t_camera camera);
+
+double	get_viewport_width(int fov, double focal_length);
+double	get_viewport_height(double viewport_width);
+
+t_point	get_viewport_center(t_camera camera, double focal_length);
+t_point	get_viewport_corner(t_viewport *viewport, int dir_w, int dir_h);
+t_point	get_viewport_starting(t_viewport *viewport);
+
+t_vec3	get_viewport_axis_vector(t_vec3 camera_vector);
+t_vec3	get_viewport_right_vector(t_viewport *viewport, t_camera camera);
+t_vec3	get_viewport_down_vector(t_viewport *viewport, t_camera camera);
+t_vec3	get_viewport_unit_vector(t_vec3 vector, int dir);
 
 #endif

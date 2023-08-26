@@ -22,6 +22,17 @@ t_vec3	vset(double x, double y, double z)
 	return (vec);
 }
 
+// 입력받은 두 벡터가 같은 벡터인지 확인하여 결과값을 반환
+int	vsame(t_vec3 vec1, t_vec3 vec2)
+{
+	vec1 = vunit(vec1);
+	vec2 = vunit(vec2);
+	if ((vec1.x == vec2.x) && (vec1.y == vec2.y) && (vec1.z = vec2.z))
+		return (TRUE);
+	else
+		return (FALSE);
+}
+
 t_point	pset(double x, double y, double z)
 {
 	return ((t_point)vset(x, y, z));

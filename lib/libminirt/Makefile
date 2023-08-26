@@ -2,7 +2,7 @@
 NAME = libminirt.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-ARFLAGS = rcs
+ARFLAGS = -rcs
 RM = rm -rf
 
 # PATH
