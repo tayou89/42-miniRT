@@ -121,6 +121,7 @@ void	free_every_parsing_data(t_parsing *parsing);
 void	free_info_data(t_info *info);
 void	*free_2d_array(void **array);
 void	*free_1d_array(void *array);
-void	push_back(t_list *world, void *elem);
+t_list	*create_node(void *elem, int type);
+void	push_back(t_list **world, void *elem);
 void	free_list(t_list *world);
 #endif

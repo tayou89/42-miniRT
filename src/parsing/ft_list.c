@@ -1,15 +1,31 @@
 #include "datasheet.h"
 #include <stdlib.h>
 
-void	push_back(t_list *world, void *elem)
+t_list	*create_node(void *elem, int type)
 {
-	if (world == NULL)
-		world = elem;
+	t_list	*node;
+
+	node = (t_list *)malloc(sizeof(t_list));
+	if (node == NULL)
+		return (NULL);
+	node->type = type;
+	node->element = elem;
+	node->next = NULL;
+	return (node);
+}
+
+void	push_back(t_list **world, t_list *node)
+{
+	t_list	*now;
+
+	if (*world == NULL)
+		*world = node;
 	else
 	{
-		while (world->next != NULL)
-			world = world->next;
-		world->element = elem;
+		now = *world;
+		while (now->next != NULL)
+			now = now->next;
+		now->next = node;
 	}
 }
 

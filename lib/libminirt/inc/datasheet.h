@@ -95,6 +95,7 @@ typedef	struct s_viewport
 
 typedef struct s_list
 {
+	int				type;
 	void			*element;
 	struct s_list	*next;
 }t_list;
@@ -105,7 +106,7 @@ typedef struct s_world
 	t_ambient	ambient;
 	t_camera	camera;
 	t_light		light;
-	t_list		obj;
+	t_list		*obj;
 	t_viewport	viewport;
 }t_world;
 

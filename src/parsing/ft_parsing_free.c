@@ -6,7 +6,7 @@ void	free_every_parsing_data(t_parsing *parsing)
 
 	data = &parsing->data;
 	free_info_data(&parsing->info);
-	free_list(&parsing->data.obj);
+	free_list(parsing->data.obj);
 	if (parsing->line.info != (void *) 0)
 		parsing->line.info = free_2d_array((void *) parsing->line.info);
 	if (parsing->file.line != (void *) 0)
