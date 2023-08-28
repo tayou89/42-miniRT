@@ -32,7 +32,7 @@ int	sp_hit(t_sp *sp, t_ray ray, t_rec *rec)
 	double			discrim;
 	double			t;
 
-	discrim = (coef.b * coef.b) - (coef.a * coef.c);
+	discrim = (coef.y * coef.y) - (coef.x * coef.z);
 	if (!double_equal(discrim, 0) && discrim < 0)
 		return (FALSE);
 	discrim = sqrt(discrim);

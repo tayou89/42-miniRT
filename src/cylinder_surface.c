@@ -45,7 +45,7 @@ int	cy_hit_surface(t_cy *cy, t_ray ray, t_rec *rec)
 	double			discrim;
 	double			t;
 
-	discrim = (coef.b * coef.b) - (coef.a * coef.c);
+	discrim = (coef.y * coef.y) - (coef.x * coef.z);
 	if ((discrim < 0 && !double_equal(discrim, 0)) \
 		|| (double_equal(discrim, 0) && abs_vh == 1.0))
 		return (FALSE);

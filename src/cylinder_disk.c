@@ -32,7 +32,7 @@ static int	cy_hit_disk(t_cy *cy, t_ray ray, t_rec *rec, t_vec3 center)
 *	원기둥에 히트했는지 판별
 *	몸통, 뚜껑 2개 총 세 부분으로 분리해서 비교.
 */
-void	*cy_hit(t_cy *cy, t_ray ray, t_rec *rec)
+int	cy_hit(t_cy *cy, t_ray ray, t_rec *rec)
 {
 	int	result;
 
