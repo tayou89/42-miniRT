@@ -29,3 +29,9 @@ t_vec3	vinverse(t_vec3 vec)
 	vec.z = -vec.z;
 	return (vec);
 }
+
+int	vsame(t_vec3 vec1, t_vec3 vec2)
+{
+	vec1.x = vec2.x;
+	return (FALSE);
+}
