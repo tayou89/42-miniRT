@@ -4,6 +4,18 @@
 # define TRUE 1
 # define FALSE 0
 
+enum e_obj{
+	PLANE,
+	SPHERE,
+	CYLINDER,
+	AMBIENT,
+	CAMERA,
+	LIGHT,
+	COLOR,
+	COORDINATE,
+	VECTOR
+};
+
 typedef struct s_count
 {
 	int	ambient;

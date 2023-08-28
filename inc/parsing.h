@@ -17,16 +17,6 @@
 # define OPEN_ERROR				3
 # define DATA_ERROR				4
 
-# define AMBIENT				0
-# define CAMERA					1
-# define LIGHT					2
-# define SPHERE					3
-# define PLANE					4
-# define CYLINDER				5
-# define COLOR					6
-# define COORDINATE				7
-# define VECTOR					8
-
 # define AMBIENT_INFO_COUNT		2
 # define CAMERA_INFO_COUNT		3
 # define LIGHT_INFO_COUNT		3
