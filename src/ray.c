@@ -9,11 +9,6 @@ t_ray	ray_init(t_point orig, t_vec3 dir)
 	return (ray);
 }
 
-t_vec3	ray_primary(t_ray ray)
-{
-	t_ray	primary;
-}
-
 t_point	ray_at(t_ray ray, double t)
 {
 	t_point	point;
