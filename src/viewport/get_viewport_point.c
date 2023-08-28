@@ -14,7 +14,7 @@ t_point	get_viewport_center(t_camera camera, double focal_length)
 	return (center_point);
 }
 
-t_point get_viewport_corner(t_viewport *viewport, int dir_w, int dir_h)
+t_point	get_viewport_corner(t_viewport *viewport, int dir_w, int dir_h)
 {
 	t_vec3	width_vector;
 	t_vec3	height_vector;

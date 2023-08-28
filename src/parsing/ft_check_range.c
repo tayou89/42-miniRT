@@ -1,6 +1,6 @@
 #include "parsing.h"
 
-int	check_rgb_range(int	color)
+int	check_rgb_range(int color)
 {
 	if (color >= 0 && color <= 255)
 		return (TRUE);
@@ -8,7 +8,7 @@ int	check_rgb_range(int	color)
 		return (FALSE);
 }
 
-int	check_fov_range(int	fov)
+int	check_fov_range(int fov)
 {
 	if (fov > 0 && fov < 180)
 		return (TRUE);

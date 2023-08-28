@@ -48,7 +48,7 @@ static int	check_line_if_substance_exist(char *line)
 		return (TRUE);
 }
 
-static void check_data_count(t_count count, t_parsing *parsing)
+static void	check_data_count(t_count count, t_parsing *parsing)
 {
 	if (count.ambient == 0 || count.camera == 0)
 		ft_parsing_error(DATA_ERROR, 0, parsing);

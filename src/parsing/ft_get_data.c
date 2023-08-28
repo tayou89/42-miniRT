@@ -31,14 +31,13 @@ t_color	get_color_data(char **string, t_parsing *parsing)
 		|| check_rgb_range(color.y) == FALSE
 		|| check_rgb_range(color.z) == FALSE)
 		ft_parsing_error(DATA_ERROR, 0, parsing);
-
 	return (color);
 }
 
-t_vec3	get_vector_data (char **string, t_parsing *parsing)
+t_vec3	get_vector_data(char **string, t_parsing *parsing)
 {
 	t_vec3	vector;
-	
+
 	vector.x = get_double(string[0], parsing);
 	vector.y = get_double(string[1], parsing);
 	vector.z = get_double(string[2], parsing);
@@ -54,7 +53,7 @@ t_vec3	get_vector_data (char **string, t_parsing *parsing)
 t_point	get_coordinate_data(char **string, t_parsing *parsing)
 {
 	t_point	coordinate;
-	
+
 	coordinate.x = get_double(string[0], parsing);
 	coordinate.y = get_double(string[1], parsing);
 	coordinate.z = get_double(string[2], parsing);

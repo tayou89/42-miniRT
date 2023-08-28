@@ -15,7 +15,7 @@ double	get_viewport_height(double viewport_width)
 	double	height;
 	double	ratio;
 
-	ratio  = (double) WIN_HEIGHT / (double) WIN_WIDTH;
+	ratio = (double) WIN_HEIGHT / (double) WIN_WIDTH;
 	height = viewport_width * ratio;
 	return (height);
 }

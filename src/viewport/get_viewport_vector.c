@@ -33,7 +33,7 @@ t_vec3	get_viewport_down_vector(t_viewport *viewport, t_camera camera)
 	return (down_vector);
 }
 
-t_vec3	get_viewport_unit_vector(t_vec3 vector, int	dir)
+t_vec3	get_viewport_unit_vector(t_vec3 vector, int dir)
 {
 	t_vec3	viewport_unit_vector;
 

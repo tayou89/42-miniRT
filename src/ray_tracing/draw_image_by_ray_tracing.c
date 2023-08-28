@@ -1,4 +1,5 @@
 #include "ray_tracing.h"
+#include "parsing.h"
 
 void	draw_image_by_ray_tracing(t_data *data)
 {

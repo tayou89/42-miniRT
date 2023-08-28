@@ -42,7 +42,7 @@ static void	check_file_extension(char *file_name, t_parsing *parsing)
 	char	*file_extension;
 	char	*right_extension;
 	int		file_extension_size;
-	
+
 	file_extension = get_file_extension(file_name);
 	if (file_extension == (void *) 0)
 		ft_parsing_error(EXTENSION_ERROR, 0, parsing);
