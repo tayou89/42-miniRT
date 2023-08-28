@@ -1,6 +1,6 @@
 #include "ray_tracing.h"
 
-t_point	get_target_point(t_viewport viewport, t_pixel pixel);
+static t_point	get_target_point(t_viewport viewport, t_pixel pixel);
 
 t_ray	get_primary_ray(t_camera camera, t_viewport viewport, t_pixel pixel)
 {
@@ -14,7 +14,7 @@ t_ray	get_primary_ray(t_camera camera, t_viewport viewport, t_pixel pixel)
 	return (primary_ray);
 }
 
-t_point	get_target_point(t_viewport viewport, t_pixel pixel)
+static t_point	get_target_point(t_viewport viewport, t_pixel pixel)
 {
 	t_point	target_point;
 	t_point	right_from_starting;

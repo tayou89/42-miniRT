@@ -54,12 +54,6 @@ static void	count_element(int identifier, t_data *data)
 		data->count.camera++;
 	else if (identifier == LIGHT)
 		data->count.light++;
-	else if (identifier == SPHERE)
-		data->count.sphere++;
-	else if (identifier == PLANE)
-		data->count.plane++;
-	else if (identifier == CYLINDER)
-		data->count.cylinder++;
 }
 
 static void	check_element_exception(t_count count, t_parsing *parsing)

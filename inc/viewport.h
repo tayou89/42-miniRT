@@ -7,6 +7,11 @@
 
 # define FOCAL_LENGTH	1
 
+# define DIR_UP		0
+# define DIR_DOWN	1
+# define DIR_LEFT	2
+# define DIR_RIGHT	3
+
 void	get_viewport_data(t_viewport *viewport, t_camera camera);
 
 double	get_viewport_width(int fov, double focal_length);

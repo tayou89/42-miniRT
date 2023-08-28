@@ -4,11 +4,6 @@
 
 # include "datasheet.h"
 
-# define DIR_UP		0
-# define DIR_DOWN	1
-# define DIR_LEFT	2
-# define DIR_RIGHT	3
-
 t_vec3	vinit(void);
 t_vec3	vset(double x, double y, double z);
 t_point	pset(double x, double y, double z);
