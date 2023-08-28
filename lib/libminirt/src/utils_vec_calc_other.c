@@ -34,14 +34,5 @@ double	vlen(t_vec3 vec)
 */
 t_vec3	vunit(t_vec3 vec)
 {
-	double	len;
-
-	len = vlen(vec);
-	if (len != 0)
-	{
-		vec.x /= len;
-		vec.y /= len;
-		vec.z /= len;
-	}
-	return (vec);
+	return (vdiv_s(vec, vlen(vec)));
 }
