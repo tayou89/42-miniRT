@@ -5,7 +5,7 @@ static void	check_file_extension(char *file_name, t_parsing *parsing);
 static char	*get_file_extension(char *file_name);
 static void	open_file(char *file_name, t_parsing *parsing);
 
-void	parse_data(int argc, char **argv, t_data *data)
+void	parse_data(int argc, char **argv, t_world *data)
 {
 	t_parsing	parsing;
 
@@ -23,9 +23,6 @@ static void	initialize_data(t_parsing *parsing)
 	parsing->data.count.ambient = 0;
 	parsing->data.count.camera = 0;
 	parsing->data.count.light = 0;
-	parsing->data.sphere = (void *) 0;
-	parsing->data.plane = (void *) 0;
-	parsing->data.cylinder = (void *) 0;
 	parsing->file.line = (void *) 0;
 	parsing->line.info = (void *) 0;
 	parsing->info.color = (void *) 0;

@@ -1,7 +1,7 @@
 #include "parsing.h"
 
 static void	get_identifier(char *identifier, t_parsing *parsing);
-static void	count_element(int identifier, t_data *data);
+static void	count_element(int identifier, t_world *data);
 static void	check_element_exception(t_count count, t_parsing *parsing);
 
 void	classify_element_information(char *line, t_parsing *parsing)
@@ -46,7 +46,7 @@ static void	get_identifier(char *identifier, t_parsing *parsing)
 		ft_parsing_error(DATA_ERROR, 0, parsing);
 }
 
-static void	count_element(int identifier, t_data *data)
+static void	count_element(int identifier, t_world *data)
 {
 	if (identifier == AMBIENT)
 		data->count.ambient++;

@@ -47,9 +47,10 @@ PARSING_FILE_NAME = parse_data \
 					ft_classify_non_object_info ft_classify_object_info \
 					get_element_data \
 					ft_get_non_object_data ft_get_object_data \
-					ft_get_data ft_make_object_node ft_add_object_node \
+					ft_get_data ft_make_object_node \
 					ft_parsing_util ft_get_number ft_check_range \
-					ft_parsing_error ft_parsing_free ft_free_array ft_free_list
+					ft_parsing_error ft_parsing_free ft_free_array\
+					ft_list
 
 VIEWPORT_FILE_NAME = get_viewport_data \
 					 get_viewport_scala \
@@ -69,6 +70,12 @@ SRC_FILES = main.c \
 			hook.c \
 			image.c \
 			initialize.c \
+			cylinder_disk.c \
+			cylinder_surface.c \
+			plane.c \
+			hit.c \
+			ray.c \
+			sphere.c \
 			$(PARSING_FILES) $(VIEWPORT_FILES) $(RAY_TRACING_FILES)
 
 BONUS_SRC_FILES = $(SRC_FILES:.c=_bonus.c)
@@ -83,7 +90,7 @@ $(OBJ_PATH)%.o : $(SRC_PATH)%.c
 	@test -d $(OBJ_PATH)$(PARSING_PATH) || mkdir -p $(OBJ_PATH)$(PARSING_PATH)
 	@test -d $(OBJ_PATH)$(VIEWPORT_PATH) || mkdir -p $(OBJ_PATH)$(VIEWPORT_PATH)
 	@test -d $(OBJ_PATH)$(RAY_TRACING_PATH) || mkdir -p $(OBJ_PATH)$(RAY_TRACING_PATH)
-	$(CC) $(CFLAGS) $(INC_ALL) -c -o $@ $<
+	$(CC) $(CFLAGS) $(INC_ALL) -c -o $@ $< -g
 
 $(OBJ_PATH)%.o : $(BONUS_SRC_PATH)%.c
 	@test -d $(OBJ_PATH) || mkdir -p $(OBJ_PATH)

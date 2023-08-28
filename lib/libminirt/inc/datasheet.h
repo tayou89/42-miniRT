@@ -26,8 +26,6 @@ typedef struct s_sphere
 	t_color			color;
 	double			diameter;
 	double			radius;
-	struct s_sphere	*next;
-	struct s_sphere	*prev;
 }t_sp;
 
 typedef struct s_plane
@@ -35,8 +33,6 @@ typedef struct s_plane
 	t_point			center;
 	t_vec3			normal;
 	t_color			color;
-	struct s_plane	*next;
-	struct s_plane	*prev;
 }t_pl;
 
 typedef struct s_cylinder
@@ -44,13 +40,11 @@ typedef struct s_cylinder
 	t_point				center;
 	t_vec3				normal;
 	t_color				color;
-	double				top;
-	double				base;
+	t_vec3				top;
+	t_vec3				base;
 	double				diameter;
 	double				radius;
 	double				height;
-	struct s_cylinder	*next;
-	struct s_cylinder	*prev;
 }t_cy;
 
 typedef struct s_ambient
@@ -99,17 +93,21 @@ typedef	struct s_viewport
 	t_vec3	axis_vector;				// 카메라 회전 축이 되는 기준 벡터
 }t_viewport;
 
-typedef struct t_data
+typedef struct s_list
+{
+	void			*element;
+	struct s_list	*next;
+}t_list;
+
+typedef struct s_world
 {
 	t_count		count;
 	t_ambient	ambient;
 	t_camera	camera;
 	t_light		light;
-	t_sp		*sphere;
-	t_pl		*plane;
-	t_cy		*cylinder;
+	t_list		obj;
 	t_viewport	viewport;
-}t_data;
+}t_world;
 
 typedef struct s_rec
 {

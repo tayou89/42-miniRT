@@ -2,11 +2,11 @@
 
 void	free_every_parsing_data(t_parsing *parsing)
 {
-	t_data	*data;
+	t_world	*data;
 
 	data = &parsing->data;
 	free_info_data(&parsing->info);
-	free_object_list(&parsing->data);
+	free_list(&parsing->data.obj);
 	if (parsing->line.info != (void *) 0)
 		parsing->line.info = free_2d_array((void *) parsing->line.info);
 	if (parsing->file.line != (void *) 0)

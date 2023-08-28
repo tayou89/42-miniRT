@@ -11,7 +11,7 @@
 int	main(int argc, char **argv)
 {
 	t_mlx	mlx;
-	t_data	data;
+	t_world	data;
 
 	parse_data(argc, argv, &data);
 	init_all(&mlx);
