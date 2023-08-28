@@ -85,13 +85,13 @@ typedef struct s_ray
 	t_vec3	dir;
 }t_ray;
 
-typedef	struct s_pixel
+typedef struct s_pixel
 {
 	t_point	point;
 	t_color	color;
 }t_pixel;
 
-typedef	struct s_viewport
+typedef struct s_viewport
 {
 	double	width;
 	double	height;
