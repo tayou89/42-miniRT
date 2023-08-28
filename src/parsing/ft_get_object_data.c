@@ -1,6 +1,6 @@
 #include "parsing.h"
 
-void	get_sphere_data(t_world *data, t_info *info, t_parsing *parsing)
+void	get_sphere_data(t_data *data, t_info *info, t_parsing *parsing)
 {
 	t_sp	*new_sphere;
 	t_list	*node;
@@ -14,7 +14,7 @@ void	get_sphere_data(t_world *data, t_info *info, t_parsing *parsing)
 	push_back(&data->obj, node);
 }
 
-void	get_plane_data(t_world *data, t_info *info, t_parsing *parsing)
+void	get_plane_data(t_data *data, t_info *info, t_parsing *parsing)
 {
 	t_pl	*new_plane;
 	t_list	*node;
@@ -28,7 +28,7 @@ void	get_plane_data(t_world *data, t_info *info, t_parsing *parsing)
 	push_back(&data->obj, node);
 }
 
-void	get_cylinder_data(t_world *data, t_info *info, t_parsing *parsing)
+void	get_cylinder_data(t_data *data, t_info *info, t_parsing *parsing)
 {
 	t_cy	*new_cylinder;
 	t_list	*node;

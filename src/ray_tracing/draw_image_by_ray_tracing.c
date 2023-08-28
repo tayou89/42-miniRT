@@ -1,7 +1,7 @@
 #include "ray_tracing.h"
 #include "parsing.h"
 
-void	draw_image_by_ray_tracing(t_world *data)
+void	draw_image_by_ray_tracing(t_data *data)
 {
 	t_pixel	pixel;
 	t_ray	primary_ray;

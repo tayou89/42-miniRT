@@ -120,7 +120,7 @@ typedef struct s_world
 	t_light		light;
 	t_list		*obj;
 	t_viewport	viewport;
-}t_world;
+}t_data;
 
 typedef struct s_rec
 {

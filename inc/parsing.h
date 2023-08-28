@@ -55,10 +55,10 @@ typedef struct s_parsing
 	t_file	file;
 	t_line	line;
 	t_info	info;
-	t_world	data;
+	t_data	data;
 }	t_parsing;
 
-void	parse_data(int argc, char **argv, t_world *data);
+void	parse_data(int argc, char **argv, t_data *data);
 void	parse_file(t_parsing *parsing);
 void	parse_line(t_parsing *parsing);
 
@@ -71,12 +71,12 @@ void	classify_plane_information(char **info, t_parsing *parsing);
 void	classify_cylinder_information(char **info, t_parsing *parsing);
 
 void	get_element_data(t_info *info, t_parsing *parsing);
-void	get_ambient_data(t_world *data, t_info *info, t_parsing *parsing);
-void	get_camera_data(t_world *data, t_info *info, t_parsing *parsing);
-void	get_light_data(t_world *data, t_info *info, t_parsing *parsing);
-void	get_sphere_data(t_world *data, t_info *info, t_parsing *parsing);
-void	get_plane_data(t_world *data, t_info *info, t_parsing *parsing);
-void	get_cylinder_data(t_world *data, t_info *info, t_parsing *parsing);
+void	get_ambient_data(t_data *data, t_info *info, t_parsing *parsing);
+void	get_camera_data(t_data *data, t_info *info, t_parsing *parsing);
+void	get_light_data(t_data *data, t_info *info, t_parsing *parsing);
+void	get_sphere_data(t_data *data, t_info *info, t_parsing *parsing);
+void	get_plane_data(t_data *data, t_info *info, t_parsing *parsing);
+void	get_cylinder_data(t_data *data, t_info *info, t_parsing *parsing);
 
 double	get_ratio_data(char *string, t_parsing *parsing);
 int		get_fov_data(char *string, t_parsing *parsing);

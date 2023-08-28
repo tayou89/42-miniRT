@@ -2,7 +2,7 @@
 
 void	free_every_parsing_data(t_parsing *parsing)
 {
-	t_world	*data;
+	t_data	*data;
 
 	data = &parsing->data;
 	free_info_data(&parsing->info);
