@@ -44,6 +44,8 @@ typedef struct s_cylinder
 	t_point				center;
 	t_vec3				normal;
 	t_color				color;
+	double				top;
+	double				base;
 	double				diameter;
 	double				radius;
 	double				height;
@@ -108,5 +110,15 @@ typedef struct t_data
 	t_cy		*cylinder;
 	t_viewport	viewport;
 }t_data;
+
+typedef struct s_rec
+{
+	t_point	intersect;
+	t_vec3	normal;
+	t_color	albedo;
+	double	t;
+	double	tmin;
+	double	tmax;
+}t_rec;
 
 #endif
