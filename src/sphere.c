@@ -5,7 +5,7 @@
 *	결과값 = 0 : 교점이 1개, 원에 접함 -> hit
 *	결과값 < 0 : 교점이 0개 -> no hit
 */
-static void	set_record(t_rec *rec, t_sp *sp, t_ray ray)
+static void	set_record(t_rec *rec, const t_sp *sp, t_ray ray)
 {
 	rec->tmax = rec->t;
 	rec->intersect = ray_at(ray, rec->t);
@@ -15,18 +15,19 @@ static void	set_record(t_rec *rec, t_sp *sp, t_ray ray)
 	rec->albedo = sp->color;
 }
 
-static t_vec3	get_coef(t_vec3 osubc, t_ray ray, t_sp *sp)
+static t_vec3	get_coef(t_vec3 osubc, t_ray ray, const t_sp *sp)
 {
 	t_vec3	coef;
 
-	coef.x = vlen(ray.dir);
+	coef.x = vlen2(ray.dir);
 	coef.y = vdot(osubc, ray.dir);
-	coef.z = vlen(osubc) - (sp->radius * sp->radius);
+	coef.z = vlen2(osubc) - (sp->radius * sp->radius);
 	return (coef);
 }
 
-int	sp_hit(t_sp *sp, t_ray ray, t_rec *rec)
+int	sp_hit(t_list *obj, t_ray ray, t_rec *rec)
 {
+	const t_sp		*sp = obj->element;
 	const t_vec3	osubc = vsub_v(ray.orig, sp->center);
 	const t_vec3	coef = get_coef(osubc, ray, sp);
 	double			discrim;

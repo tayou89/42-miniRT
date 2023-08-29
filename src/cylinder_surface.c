@@ -20,9 +20,9 @@ static t_vec3	get_coef(t_cy *cy, t_ray ray)
 	const double	vh = vdot(ray.dir, cy->normal);
 	t_vec3			coef;
 
-	coef.x = vlen(ray.dir) - (wh * wh);
+	coef.x = vlen2(ray.dir) - (wh * wh);
 	coef.y = vdot(ray.dir, w) - (vh * wh);
-	coef.z = vlen(w) - (wh * wh) - (cy->radius * cy->radius);
+	coef.z = vlen2(w) - (wh * wh) - (cy->radius * cy->radius);
 	return (coef);
 }
 

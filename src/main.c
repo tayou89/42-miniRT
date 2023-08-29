@@ -19,6 +19,7 @@ int	main(int argc, char **argv)
 	mlx_hook(mlx.ptr.win_ptr, ON_DESTROY, 0, hook_close, &mlx);
 //	put_image(&mlx);
 	get_viewport_data(&data.viewport, data.camera);
-	draw_image_by_ray_tracing(&data);
+	draw_image_by_ray_tracing(&mlx, &data);
+	mlx_put_image_to_window(mlx.ptr.mlx_ptr, mlx.ptr.win_ptr, mlx.ptr.img_ptr, 0, 0);
 	mlx_loop(mlx.ptr.mlx_ptr);
 }

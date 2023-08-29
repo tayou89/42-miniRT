@@ -1,5 +1,5 @@
 #include "hit.h"
-
+#include <stdio.h>
 /*
 *	평면에 히트했는지 판별
 *	평면의 법선벡터, 광선의 방향벡터 내적의 결과
@@ -18,11 +18,13 @@ static void	set_record(t_rec *rec, t_pl *pl, t_ray ray)
 	rec->albedo = pl->color;
 }
 
-int	pl_hit(t_pl *pl, t_ray ray, t_rec *rec)
+int	pl_hit(t_list *obj, t_ray ray, t_rec *rec)
 {
+	t_pl	*pl;
 	double	intersect;
 	double	t;
 
+	pl = obj->element;
 	intersect = vdot(pl->normal, ray.dir);
 	if (double_equal(intersect, 0))
 		return (FALSE);

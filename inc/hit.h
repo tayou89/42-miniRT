@@ -6,5 +6,10 @@
 # define EPSILON 1e-6
 
 int	double_equal(double x, double y);
+int	pl_hit(t_list *obj, t_ray ray, t_rec *rec);
+int	sp_hit(t_list *obj, t_ray ray, t_rec *rec);
+int	cy_hit(t_list *obj, t_ray ray, t_rec *rec);
 int	cy_hit_surface(t_cy *cy, t_ray ray, t_rec *rec);
+int	hit_object(t_list *world, t_ray primary, t_rec *rec);
+int	color_get_trgb(int t, int r, int g, int b);
 #endif
