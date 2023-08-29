@@ -34,29 +34,31 @@ typedef t_vec3	t_color;
 
 typedef struct s_sphere
 {
-	t_point			center;
-	t_color			color;
-	double			diameter;
-	double			radius;
+	t_point	center;
+	t_color	color;
+	double	diameter;
+	double	radius;
+	double	radius2;
 }t_sp;
 
 typedef struct s_plane
 {
-	t_point			center;
-	t_vec3			normal;
-	t_color			color;
+	t_point	center;
+	t_vec3	normal;
+	t_color	color;
 }t_pl;
 
 typedef struct s_cylinder
 {
-	t_point				center;
-	t_vec3				normal;
-	t_color				color;
-	t_vec3				top;
-	t_vec3				base;
-	double				diameter;
-	double				radius;
-	double				height;
+	t_point	center;
+	t_vec3	normal;
+	t_color	color;
+	t_vec3	top;
+	t_vec3	base;
+	double	diameter;
+	double	radius;
+	double	radius2;
+	double	height;
 }t_cy;
 
 typedef struct s_ambient
