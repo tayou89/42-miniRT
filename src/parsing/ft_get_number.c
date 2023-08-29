@@ -57,9 +57,11 @@ double	get_double(char *string, t_parsing *parsing)
 	while (ft_isdigit(string[i]) == TRUE)
 		i++;
 	if (string[i++] == '\0')
-		return ((double) integer);
+		return ((double) integer * sign);
 	decimal = get_decimal(&string[i]);
 	double_number = (integer + decimal) * sign;
+	if (double_number == 0)
+		return (0);
 	return (double_number);
 }
 
