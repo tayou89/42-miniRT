@@ -21,7 +21,7 @@ static t_vec3	get_coef(t_vec3 osubc, t_ray ray, const t_sp *sp)
 
 	coef.x = vlen2(ray.dir);
 	coef.y = vdot(osubc, ray.dir);
-	coef.z = vlen2(osubc) - (sp->radius * sp->radius);
+	coef.z = vlen2(osubc) - sp->radius2;
 	return (coef);
 }
 
