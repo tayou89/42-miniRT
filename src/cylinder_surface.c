@@ -13,41 +13,43 @@ static void	set_record(t_rec *rec, t_cy *cy, t_ray ray)
 	rec->albedo = cy->color;
 }
 
-static t_vec3	get_coef(t_cy *cy, t_ray ray)
+int		check_valid_height(t_cy *cy ,t_ray ray, double t)
 {
-	const t_vec3	w = vsub_v(ray.orig, cy->base);
-	const double	wh = vdot(w, cy->normal);
-	const double	vh = vdot(ray.dir, cy->normal);
-	t_vec3			coef;
-
-	coef.x = vlen2(ray.dir) - (wh * wh);
-	coef.y = vdot(ray.dir, w) - (vh * wh);
-	coef.z = vlen2(w) - (wh * wh) - (cy->radius * cy->radius);
-	return (coef);
-}
-
-static int	cy_check_vaild(t_cy *cy, t_point p)
-{
-	t_point	cp;
+	t_vec3	inter;
+	t_vec3	cp;
 	double	height;
 
-	cp = vsub_v(p, cy->base);
-	height = vdot(cp, vmul_s(cy->normal, cy->height));
+	inter = ray_at(ray, t);
+	cp = vsub_v(inter, cy->base);
+	height = vdot(cp, vunit(vsub_v(cy->top, cy->base)));
 	if (height < 0 || height > cy->height)
 		return (FALSE);
 	return (TRUE);
 }
 
+t_vec3	get_coef(t_cy *cy, t_ray ray)
+{
+	const t_vec3	w = vsub_v(ray.orig, cy->base);
+	const double	vh = vdot(ray.dir, cy->normal);
+	const double	wh = vdot(w, cy->normal);
+	t_vec3			coef;
+
+	coef.x = vlen2(ray.dir) - (vh * vh);
+	coef.y = vdot(ray.dir, w) - (vh * wh);
+	coef.z = vlen2(w) - (wh * wh) - cy->radius2;
+	return (coef);
+}
+
 int	cy_hit_surface(t_cy *cy, t_ray ray, t_rec *rec)
 {
 	const t_vec3	coef = get_coef(cy, ray);
-	const double	abs_vh = fabs(vdot(ray.dir, cy->normal));
+	const double	same_dir = fabs(vdot(ray.dir, cy->normal));
 	double			discrim;
 	double			t;
 
 	discrim = (coef.y * coef.y) - (coef.x * coef.z);
 	if ((discrim < 0 && !double_equal(discrim, 0)) \
-		|| (double_equal(discrim, 0) && abs_vh == 1.0))
+	|| (double_equal(discrim, 0) && double_equal(same_dir, 1.0)))
 		return (FALSE);
 	discrim = sqrt(discrim);
 	t = (-coef.y - discrim) / coef.x;
@@ -57,7 +59,7 @@ int	cy_hit_surface(t_cy *cy, t_ray ray, t_rec *rec)
 		if (t < rec->tmin || t > rec->tmax)
 			return (FALSE);
 	}
-	if (cy_check_vaild(cy, ray_at(ray, t)) == FALSE)
+	if (!check_valid_height(cy, ray, t))
 		return (FALSE);
 	rec->t = t;
 	set_record(rec, cy, ray);
