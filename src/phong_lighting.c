@@ -1,17 +1,5 @@
 #include "datasheet.h"
 #include "utils_vec.h"
-#include "hit.h"
-
-t_vec3 vmin(t_vec3 a, t_vec3 b)
-{
-	if (a.x > b.x)
-		a.x = b.x;
-	if (a.y > b.y)
-		a.y = b.y;
-	if (a.z > b.z)
-		a.z = b.z;
-	return (a);
-}
 
 t_color	get_ambient(t_ambient *amb)
 {
