@@ -17,7 +17,8 @@ INC = -I$(INC_PATH)
 SRC_FILES = utils_vec_calc_other.c \
 			utils_vec_calc_s.c \
 			utils_vec_calc_v.c \
-			utils_vec.c 
+			utils_vec.c \
+			utils.c
 
 SRCS = $(addprefix $(SRC_PATH), $(SRC_FILES))
 OBJS = $(addprefix $(OBJ_PATH), $(SRC_FILES:.c=.o))
