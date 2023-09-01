@@ -4,8 +4,12 @@ double	get_viewport_width(int fov, double focal_length)
 {
 	double	width;
 	double	half_width;
+	double	half_fov;
+	double	radian;
 
-	half_width = focal_length * tan((double) fov / 2);
+	half_fov = (double)fov / 2.0;
+	radian = half_fov * (M_PI / 180);
+	half_width = focal_length * tan(radian);
 	width = half_width * 2;
 	return (width);
 }
