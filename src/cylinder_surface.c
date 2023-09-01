@@ -2,12 +2,14 @@
 
 static void	set_record(t_rec *rec, t_cy *cy, t_ray ray)
 {
+	t_vec3	cp;
 	t_vec3	q;
 
 	rec->tmax = rec->t;
 	rec->intersect = ray_at(ray, rec->t);
-	q = vmul_s(cy->base, vdot(vsub_v(rec->intersect, cy->base), cy->normal));
-	rec->normal = vunit(vsub_v(rec->intersect, q));
+	cp = vsub_v(rec->intersect, cy->base);
+	q = vmul_s(cy->normal, vdot(cp, cy->normal));
+	rec->normal = vunit(vsub_v(cp, q));
 	if (vdot(rec->normal, ray.dir) > 0)
 		rec->normal = vinverse(rec->normal);
 	rec->albedo = cy->color;
