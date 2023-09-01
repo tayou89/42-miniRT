@@ -10,18 +10,17 @@ static void	set_hit_func(int (*hit_func[])(t_list *, t_ray, t_rec *))
 int	hit_object(t_data *data, t_ray primary, t_rec *rec)
 {
 	t_list	*world;
-	t_vec3	color;
+	int		is_hit;
 	int		(*hit_func[3])(t_list *, t_ray, t_rec *);
 
-	color = vset(0, 0, 0);
 	set_hit_func(hit_func);
 	world = data->obj;
+	is_hit = FALSE;
 	while (world)
 	{
 		if (hit_func[world->type](world, primary, rec))
-			color = phong_lighting(rec, data);
+			is_hit = TRUE;
 		world = world->next;
 	}
-	color = vmul_s(color, 255.999);
-	return (color_get_trgb(0x0, (int)color.x, (int)color.y, (int)color.z));
+	return (is_hit);
 }

@@ -16,10 +16,12 @@ void	draw_image_by_ray_tracing(t_mlx *mlx,t_data *data)
 		pixel.point.x = 0;
 		while (pixel.point.x < WIN_WIDTH)
 		{
+			color = 0;
 			rec.tmin = 0;
 			rec.tmax = INFINITY;
 			primary_ray = get_primary_ray(data->camera, data->viewport, pixel);
-			color = hit_object(data, primary_ray, &rec);
+			if (hit_object(data, primary_ray, &rec))
+				color = phong_lighting(&rec, data);
 			put_pixel(mlx, pixel.point.x, pixel.point.y, color);
 			pixel.point.x++;
 		}
