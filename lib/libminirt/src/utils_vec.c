@@ -32,6 +32,13 @@ t_vec3	vinverse(t_vec3 vec)
 
 int	vsame(t_vec3 vec1, t_vec3 vec2)
 {
-	vec1.x = vec2.x;
-	return (FALSE);
+	vec1 = vunit(vec1);
+	vec2 = vunit(vec2);
+	if (!double_equal(vec1.x, vec2.x))
+		return (FALSE);
+	if (!double_equal(vec1.y, vec2.y))
+		return (FALSE);
+	if (!double_equal(vec1.z, vec2.z))
+		return (FALSE);
+	return (TRUE);
 }
