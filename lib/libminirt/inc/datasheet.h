@@ -1,8 +1,10 @@
 #ifndef DATASHEET_H
 # define DATASHEET_H
+# include <math.h>
 
 # define TRUE 1
 # define FALSE 0
+# define EPSILON 1e-6
 
 enum e_obj{
 	PLANE,
@@ -134,4 +136,5 @@ typedef struct s_rec
 	double	tmax;
 }t_rec;
 
+int	double_equal(double x, double y);
 #endif
