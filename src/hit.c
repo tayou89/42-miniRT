@@ -1,12 +1,5 @@
 #include "hit.h"
 
-int	double_equal(double x, double y)
-{
-	if (fabs(x - y) <= EPSILON)
-		return (TRUE);
-	return (FALSE);
-}
-
 static void	set_hit_func(int (*hit_func[])(t_list *, t_ray, t_rec *))
 {
 	hit_func[PLANE] = pl_hit;
