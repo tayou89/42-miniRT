@@ -76,6 +76,7 @@ SRC_FILES = main.c \
 			hit.c \
 			ray.c \
 			sphere.c \
+			phong_lighting.c \
 			$(PARSING_FILES) $(VIEWPORT_FILES) $(RAY_TRACING_FILES)
 
 BONUS_SRC_FILES = $(SRC_FILES:.c=_bonus.c)
