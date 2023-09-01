@@ -4,7 +4,7 @@
 
 # define TRUE 1
 # define FALSE 0
-# define EPSILON 1e-6
+# define EPSILON 1e-12
 
 enum e_obj{
 	PLANE,
