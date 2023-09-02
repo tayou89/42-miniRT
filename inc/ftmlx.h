@@ -1,5 +1,6 @@
 #ifndef FTMLX_H
 # define FTMLX_H
+# include "parsing.h"
 
 typedef struct s_ptr
 {
@@ -21,4 +22,10 @@ typedef struct s_mlx
 	t_ptr	ptr;
 	t_img	img;
 }t_mlx;
+
+typedef struct s_rt
+{
+	t_mlx	*mlx;
+	t_data	*data;
+}t_rt;
 #endif

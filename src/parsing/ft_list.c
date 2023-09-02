@@ -31,12 +31,13 @@ void	push_back(t_list **world, t_list *node)
 
 void	free_list(t_list *world)
 {
-	void	*del;
+	t_list	*del;
 
 	while (world != NULL)
 	{
 		del = world;
 		world = world->next;
+		free(del->element);
 		free(del);
 	}
 }
