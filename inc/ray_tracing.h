@@ -1,7 +1,6 @@
 #ifndef RAY_TRACING_H
 # define RAY_TRACING_H
 
-# include "datasheet.h"
 # include "initialize.h"
 # include "utils_vec.h"
 

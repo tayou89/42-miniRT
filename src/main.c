@@ -1,7 +1,4 @@
-#include <stdio.h>
 #include <stdlib.h>
-#include "mlx.h"
-#include "ftmlx.h"
 #include "initialize.h"
 #include "datasheet.h"
 #include "parsing.h"
