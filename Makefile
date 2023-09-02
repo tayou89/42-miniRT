@@ -66,7 +66,6 @@ RAY_TRACING_FILES = $(addprefix ray_tracing/, $(addsuffix .c, $(RAY_TRACING_FILE
 
 # FILES
 SRC_FILES = main.c \
-			color.c \
 			hook.c \
 			image.c \
 			initialize.c \

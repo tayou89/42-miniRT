@@ -17,9 +17,7 @@
 # define ON_DESTROY		17
 # define KEY_ESC 		53
 
-void	put_pixel(t_mlx *mlx, int x, int y, int color);
-void	put_image(t_mlx *mlx);
-int		hook_close(t_mlx *mlx);
 void	*init_all(t_mlx *mlx);
+int		hook_close(t_mlx *mlx);
 int		hook_keyup(int keycode, t_mlx *mlx);
 #endif

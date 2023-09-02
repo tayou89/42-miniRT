@@ -45,7 +45,9 @@ t_cy	*make_cylinder_node(t_info *info, t_parsing *parsing)
 	cylinder->radius = cylinder->diameter / 2;
 	cylinder->radius2 = cylinder->radius * cylinder->radius;
 	cylinder->height = get_double(info->height, parsing);
-	cylinder->top = vadd_v(cylinder->center, vmul_s(cylinder->normal, cylinder->height / 2));
-	cylinder->base = vadd_v(cylinder->center, vmul_s(vinverse(cylinder->normal), cylinder->height / 2));
+	cylinder->top = vadd_v(cylinder->center, \
+					vmul_s(cylinder->normal, cylinder->height / 2));
+	cylinder->base = vadd_v(cylinder->center, \
+					vmul_s(vinverse(cylinder->normal), cylinder->height / 2));
 	return (cylinder);
 }

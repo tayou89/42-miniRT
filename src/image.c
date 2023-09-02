@@ -1,5 +1,10 @@
 #include "initialize.h"
 
+int	color_get_trgb(int t, int r, int g, int b)
+{
+	return (t << 24 | r << 16 | g << 8 | b);
+}
+
 void	put_pixel(t_mlx *mlx, int x, int y, int color)
 {
 	char	*dst;
@@ -10,24 +15,4 @@ void	put_pixel(t_mlx *mlx, int x, int y, int color)
 							+ x * (mlx->img.bits_per_pixel / 8));
 		*(unsigned int *)dst = color;
 	}
-}
-
-void	put_image(t_mlx *mlx)
-{
-	int	i;
-	int	k;
-
-	i = -1;
-	while (++i < WIN_HEIGHT)
-	{
-		k = -1;
-		while (++k < WIN_WIDTH)
-			put_pixel(mlx, k, i, 0x00000000);
-	}
-	mlx_put_image_to_window(
-		mlx->ptr.mlx_ptr,
-		mlx->ptr.win_ptr,
-		mlx->ptr.img_ptr,
-		0,
-		0);
 }

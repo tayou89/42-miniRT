@@ -3,7 +3,7 @@
 #include "hit.h"
 #include "ftmlx.h"
 
-void	draw_image_by_ray_tracing(t_mlx *mlx,t_data *data)
+void	draw_image_by_ray_tracing(t_mlx *mlx, t_data *data)
 {
 	t_pixel	pixel;
 	t_ray	primary_ray;

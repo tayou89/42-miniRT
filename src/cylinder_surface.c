@@ -15,7 +15,7 @@ static void	set_record(t_rec *rec, t_cy *cy, t_ray ray)
 	rec->albedo = cy->color;
 }
 
-int		check_valid_height(t_cy *cy ,t_ray ray, double t)
+int	check_valid_height(t_cy *cy, t_ray ray, double t)
 {
 	t_vec3	inter;
 	t_vec3	cp;

@@ -5,7 +5,7 @@ int	is_shadow(t_rec *rec, t_data *data)
 	t_rec	temp;
 	t_ray	light;
 	t_vec3	hitp;
-	
+
 	hitp = vadd_v(rec->intersect, vmul_s(rec->normal, EPSILON));
 	temp = *rec;
 	temp.tmax = vlen(vsub_v(data->light.point, temp.intersect));
@@ -25,12 +25,13 @@ t_color	get_specula(t_rec *rec, t_data *data)
 	t_vec3	from_light;
 	t_vec3	to_view;
 	t_vec3	reflect;
-	t_color specula;
+	t_color	specula;
 	t_vec3	coef;
 
 	from_light = vunit(vsub_v(rec->intersect, data->light.point));
 	to_view = vunit(vmul_s(data->camera.normal, -1));
-	reflect = vsub_v(from_light, vmul_s(rec->normal, vdot(from_light, rec->normal) * 2.0));
+	reflect = vsub_v(from_light, \
+				vmul_s(rec->normal, vdot(from_light, rec->normal) * 2.0));
 	coef.x = 2;
 	coef.y = 0.5;
 	coef.z = pow(fmax(vdot(to_view, reflect), 0.0), coef.x);
