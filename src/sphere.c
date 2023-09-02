@@ -1,10 +1,5 @@
 #include "hit.h"
-/*
-*	구에 히트 했는지 판별
-*	결과값 > 0 : 교점이 2개 -> hit
-*	결과값 = 0 : 교점이 1개, 원에 접함 -> hit
-*	결과값 < 0 : 교점이 0개 -> no hit
-*/
+
 static void	set_record(t_rec *rec, const t_sp *sp, t_ray ray)
 {
 	rec->tmax = rec->t;

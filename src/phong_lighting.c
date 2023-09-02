@@ -1,6 +1,6 @@
 #include "hit.h"
 
-int	is_shadow(t_rec *rec, t_data *data)
+static int	is_shadow(t_rec *rec, t_data *data)
 {
 	t_rec	temp;
 	t_ray	light;
@@ -15,12 +15,12 @@ int	is_shadow(t_rec *rec, t_data *data)
 	return (FALSE);
 }
 
-t_color	get_ambient(t_ambient *amb)
+static t_color	get_ambient(t_ambient *amb)
 {
 	return (vmul_s(amb->color, amb->ratio));
 }
 
-t_color	get_specula(t_rec *rec, t_data *data)
+static t_color	get_specula(t_rec *rec, t_data *data)
 {
 	t_vec3	from_light;
 	t_vec3	to_view;
@@ -39,7 +39,7 @@ t_color	get_specula(t_rec *rec, t_data *data)
 	return (specula);
 }
 
-t_color	get_diffuse(t_rec *rec, t_data *data)
+static t_color	get_diffuse(t_rec *rec, t_data *data)
 {
 	t_color	diffuse;
 	t_vec3	dir;

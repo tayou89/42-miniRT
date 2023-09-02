@@ -15,7 +15,7 @@ static void	set_record(t_rec *rec, t_cy *cy, t_ray ray)
 	rec->albedo = cy->color;
 }
 
-int	check_valid_height(t_cy *cy, t_ray ray, double t)
+static int	check_valid_height(t_cy *cy, t_ray ray, double t)
 {
 	t_vec3	inter;
 	t_vec3	cp;
@@ -29,7 +29,7 @@ int	check_valid_height(t_cy *cy, t_ray ray, double t)
 	return (TRUE);
 }
 
-t_vec3	get_coef(t_cy *cy, t_ray ray)
+static t_vec3	get_coef(t_cy *cy, t_ray ray)
 {
 	const t_vec3	w = vsub_v(ray.orig, cy->base);
 	const double	vh = vdot(ray.dir, cy->normal);
