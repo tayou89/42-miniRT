@@ -26,16 +26,14 @@ static t_color	get_specula(t_rec *rec, t_data *data)
 	t_vec3	to_view;
 	t_vec3	reflect;
 	t_color	specula;
-	t_vec3	coef;
+	double	t;
 
 	from_light = vunit(vsub_v(rec->intersect, data->light.point));
 	to_view = vunit(vmul_s(data->camera.normal, -1));
 	reflect = vsub_v(from_light, \
 				vmul_s(rec->normal, vdot(from_light, rec->normal) * 2.0));
-	coef.x = 2;
-	coef.y = 0.5;
-	coef.z = pow(fmax(vdot(to_view, reflect), 0.0), coef.x);
-	specula = vmul_s(vmul_s(data->light.color, coef.y), coef.z);
+	t = pow(fmax(vdot(to_view, reflect), 0.0), EXPONENT);
+	specula = vmul_s(vmul_s(data->light.color, SHINY), t);
 	return (specula);
 }
 
@@ -59,7 +57,7 @@ int	phong_lighting(t_rec *rec, t_data *data)
 
 	shadow = 1;
 	if (is_shadow(rec, data))
-		shadow = 0.6;
+		shadow = SHADOW;
 	light_color = vset(0, 0, 0);
 	light_color = vadd_v(light_color, get_ambient(&data->ambient));
 	light_color = vadd_v(light_color, get_diffuse(rec, data));

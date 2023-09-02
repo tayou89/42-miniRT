@@ -2,6 +2,9 @@
 # define HIT_H
 
 # include "ray.h"
+# define EXPONENT 64
+# define SHADOW 0.5
+# define SHINY 0.8
 
 int	color_get_trgb(int t, int r, int g, int b);
 int	hit_object(t_data *data, t_ray primary, t_rec *rec);
