@@ -1,13 +1,12 @@
 #ifndef UTILS_VEC_H
 # define UTILS_VEC_H
 # include <math.h>
-
 # include "datasheet.h"
 
 t_vec3	vinit(void);
 t_vec3	vset(double x, double y, double z);
 t_vec3	vinverse(t_vec3 vec);
-int		vsame(t_vec3 vec1, t_vec3 vec2);	// 두벡터가 같은 벡터인지 확인하는 함수 추가
+int		vsame(t_vec3 vec1, t_vec3 vec2);
 t_vec3	vmin(t_vec3 vec1, t_vec3 vec2);
 double	vlen2(t_vec3 vec);
 double	vlen(t_vec3 vec);

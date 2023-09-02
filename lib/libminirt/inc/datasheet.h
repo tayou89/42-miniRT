@@ -101,12 +101,12 @@ typedef struct s_viewport
 	double	height;
 	t_point	center;
 	t_point	left_top;
-	t_point	starting;					// 뷰포트 상에서 실제 primary_ray를 쏘는 시작지점
+	t_point	starting;
 	t_vec3	right_vector;				
 	t_vec3	down_vector;
-	t_vec3	right_unit;					// right_vector / WIN_WIDTH
-	t_vec3	down_unit;					// down_vector / WIN_HEIGHT
-	t_vec3	axis_vector;				// 카메라 회전 축이 되는 기준 벡터
+	t_vec3	right_unit;
+	t_vec3	down_unit;
+	t_vec3	axis_vector;
 }t_viewport;
 
 typedef struct s_list

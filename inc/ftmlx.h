@@ -1,5 +1,5 @@
 #ifndef FTMLX_H
-#define FTMLX_H
+# define FTMLX_H
 
 typedef struct s_ptr
 {
