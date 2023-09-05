@@ -18,7 +18,7 @@
 
 # define AMBIENT_INFO_COUNT		2
 # define CAMERA_INFO_COUNT		3
-# define LIGHT_INFO_COUNT		3
+# define LIGHT_INFO_COUNT		2
 # define SPHERE_INFO_COUNT		3
 # define PLANE_INFO_COUNT		3
 # define CYLINDER_INFO_COUNT	5
@@ -86,10 +86,6 @@ t_point	get_coordinate_data(char **string, t_parsing *parsing);
 t_sp	*make_sphere_node(t_info *info, t_parsing *parsing);
 t_pl	*make_plane_node(t_info *info, t_parsing *parsing);
 t_cy	*make_cylinder_node(t_info *info, t_parsing *parsing);
-
-t_sp	*add_sphere_node(t_sp *new, t_sp *list);
-t_pl	*add_plane_node(t_pl *new, t_pl *list);
-t_cy	*add_cylinder_node(t_cy *new, t_cy *list);
 
 int		get_integer(char *string, t_parsing *parsing);
 double	get_double(char *string, t_parsing *parsing);

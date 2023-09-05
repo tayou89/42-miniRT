@@ -11,5 +11,4 @@ int	pl_hit(t_list *obj, t_ray ray, t_rec *rec);
 int	sp_hit(t_list *obj, t_ray ray, t_rec *rec);
 int	cy_hit(t_list *obj, t_ray ray, t_rec *rec);
 int	cy_hit_surface(t_cy *cy, t_ray ray, t_rec *rec);
-int	phong_lighting(t_rec *rec, t_data *scene);
 #endif
