@@ -1,4 +1,4 @@
-#include "utils_vec.h"
+#include "utils_vec_bonus.h"
 
 // 값이 0인 벡터를 반환
 t_vec3	vinit(void)

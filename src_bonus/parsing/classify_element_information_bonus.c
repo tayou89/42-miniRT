@@ -1,4 +1,4 @@
-#include "parsing.h"
+#include "parsing_bonus.h"
 
 static void	get_identifier(char *identifier, t_parsing *parsing);
 static void	count_element(int identifier, t_data *data);

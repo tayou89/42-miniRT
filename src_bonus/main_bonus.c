@@ -1,9 +1,9 @@
 #include <stdlib.h>
-#include "initialize.h"
-#include "datasheet.h"
-#include "parsing.h"
-#include "viewport.h"
-#include "image.h"
+#include "initialize_bonus.h"
+#include "datasheet_bonus.h"
+#include "parsing_bonus.h"
+#include "viewport_bonus.h"
+#include "image_bonus.h"
 
 int	main(int argc, char **argv)
 {

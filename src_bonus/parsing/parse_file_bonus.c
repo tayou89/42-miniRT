@@ -1,4 +1,4 @@
-#include "parsing.h"
+#include "parsing_bonus.h"
 
 static char	*remove_newline(char *line);
 static int	check_line_if_substance_exist(char *line);

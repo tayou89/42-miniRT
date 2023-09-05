@@ -1,7 +1,7 @@
 #ifndef HIT_H
 # define HIT_H
 
-# include "ray.h"
+# include "ray_bonus.h"
 # define EXPONENT 64
 # define SHADOW 0.5
 # define SHINY 0.8

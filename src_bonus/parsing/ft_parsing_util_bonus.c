@@ -1,4 +1,4 @@
-#include "parsing.h"
+#include "parsing_bonus.h"
 
 char	**get_splitted_array(char *array, char seperator, t_parsing *data)
 {

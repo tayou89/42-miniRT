@@ -1,4 +1,4 @@
-#include "viewport.h"
+#include "viewport_bonus.h"
 
 static t_vec3	resize_vector(t_vec3 vector_to_resize, double size);
 

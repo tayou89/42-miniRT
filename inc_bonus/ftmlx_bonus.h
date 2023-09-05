@@ -1,6 +1,6 @@
 #ifndef FTMLX_H
 # define FTMLX_H
-# include "parsing.h"
+# include "parsing_bonus.h"
 
 typedef struct s_ptr
 {

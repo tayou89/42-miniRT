@@ -1,4 +1,4 @@
-#include "viewport.h"
+#include "viewport_bonus.h"
 
 static void	get_viewport_initial_data(t_viewport *viewport, t_camera camera);
 static void	get_viewport_vector(t_viewport *viewport, t_camera camera);

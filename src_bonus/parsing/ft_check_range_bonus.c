@@ -1,4 +1,4 @@
-#include "parsing.h"
+#include "parsing_bonus.h"
 
 int	check_rgb_range(int color)
 {

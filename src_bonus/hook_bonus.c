@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include "initialize.h"
+#include "initialize_bonus.h"
 
 static void	exit_program(t_rt *scene)
 {

@@ -1,4 +1,4 @@
-#include "parsing.h"
+#include "parsing_bonus.h"
 
 double	get_ratio_data(char *string, t_parsing *parsing)
 {

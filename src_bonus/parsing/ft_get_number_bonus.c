@@ -1,4 +1,4 @@
-#include "parsing.h"
+#include "parsing_bonus.h"
 
 static int		get_number(char *string, int sign, t_parsing *data);
 static int		check_string_is_real_number(char *string, int index);

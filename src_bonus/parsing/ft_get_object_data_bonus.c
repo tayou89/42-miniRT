@@ -1,4 +1,4 @@
-#include "parsing.h"
+#include "parsing_bonus.h"
 
 void	get_sphere_data(t_data *data, t_info *info, t_parsing *parsing)
 {

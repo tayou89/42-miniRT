@@ -1,4 +1,4 @@
-#include "image.h"
+#include "image_bonus.h"
 
 int	color_get_trgb(int t, int r, int g, int b)
 {

@@ -1,4 +1,4 @@
-#include "parsing.h"
+#include "parsing_bonus.h"
 
 static void	initialize_data(t_parsing *parsing);
 static void	check_file_extension(char *file_name, t_parsing *parsing);

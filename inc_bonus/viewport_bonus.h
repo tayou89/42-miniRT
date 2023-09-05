@@ -1,8 +1,8 @@
 #ifndef VIEWPORT_H
 # define VIEWPORT_H
 
-# include "initialize.h"
-# include "utils_vec.h"
+# include "initialize_bonus.h"
+# include "utils_vec_bonus.h"
 
 # define FOCAL_LENGTH	1
 

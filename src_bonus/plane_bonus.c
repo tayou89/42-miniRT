@@ -1,4 +1,4 @@
-#include "hit.h"
+#include "hit_bonus.h"
 
 static void	set_record(t_rec *rec, t_pl *pl, t_ray ray)
 {

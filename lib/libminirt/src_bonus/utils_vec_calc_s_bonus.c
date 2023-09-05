@@ -1,4 +1,4 @@
-#include "utils_vec.h"
+#include "utils_vec_bonus.h"
 
 // 벡터를 스칼라값만큼 더한 결과를 반환
 t_vec3	vadd_s(t_vec3 vec, double s)

@@ -1,4 +1,4 @@
-#include "hit.h"
+#include "hit_bonus.h"
 
 static void	set_hit_func(int (*hit_func[])(t_list *, t_ray, t_rec *))
 {

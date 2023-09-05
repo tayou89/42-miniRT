@@ -1,8 +1,8 @@
 #ifndef INITIALIZE_H
 # define INITIALIZE_H
 
-# include "ftmlx.h"
-# include "mlx.h"
+# include "ftmlx_bonus.h"
+# include "mlx_bonus.h"
 # include <stdio.h>
 
 # define WIN_WIDTH	1920

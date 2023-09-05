@@ -1,4 +1,4 @@
-#include "utils_vec.h"
+#include "utils_vec_bonus.h"
 
 // 두개의 벡터를 덧셈한 결과를 반환
 t_vec3	vadd_v(t_vec3 vec1, t_vec3 vec2)

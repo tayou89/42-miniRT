@@ -1,4 +1,4 @@
-#include "initialize.h"
+#include "initialize_bonus.h"
 #include <stdlib.h>
 
 static void	init_ftmlx(t_mlx *mlx)

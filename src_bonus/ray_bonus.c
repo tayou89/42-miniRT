@@ -1,4 +1,4 @@
-#include "ray.h"
+#include "ray_bonus.h"
 
 static t_point	get_target_point(t_viewport viewport, t_pixel pixel);
 

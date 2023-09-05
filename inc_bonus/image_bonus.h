@@ -1,8 +1,8 @@
 #ifndef IMAGE_H
 # define IMAGE_H
 
-# include "initialize.h"
-# include "hit.h"
+# include "initialize_bonus.h"
+# include "hit_bonus.h"
 
 void	draw_image_by_ray_tracing(t_mlx *mlx, t_data *data);
 int		phong_lighting(t_rec *rec, t_data *data);

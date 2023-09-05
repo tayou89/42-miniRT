@@ -1,4 +1,4 @@
-#include "viewport.h"
+#include "viewport_bonus.h"
 
 static t_vec3	get_dir_vector(t_viewport *viewport, int dir);
 
