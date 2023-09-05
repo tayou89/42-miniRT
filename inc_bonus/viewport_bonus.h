@@ -1,5 +1,5 @@
-#ifndef VIEWPORT_H
-# define VIEWPORT_H
+#ifndef VIEWPORT_BONUS_H
+# define VIEWPORT_BONUS_H
 
 # include "initialize_bonus.h"
 # include "utils_vec_bonus.h"

@@ -1,5 +1,5 @@
-#ifndef IMAGE_H
-# define IMAGE_H
+#ifndef IMAGE_BONUS_H
+# define IMAGE_BONUS_H
 
 # include "initialize_bonus.h"
 # include "hit_bonus.h"

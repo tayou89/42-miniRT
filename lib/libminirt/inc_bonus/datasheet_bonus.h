@@ -1,5 +1,5 @@
-#ifndef DATASHEET_H
-# define DATASHEET_H
+#ifndef DATASHEET_BONUS_H
+# define DATASHEET_BONUS_H
 # include <math.h>
 
 # define TRUE 1

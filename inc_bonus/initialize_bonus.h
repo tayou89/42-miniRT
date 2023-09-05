@@ -1,5 +1,5 @@
-#ifndef INITIALIZE_H
-# define INITIALIZE_H
+#ifndef INITIALIZE_BONUS_H
+# define INITIALIZE_BONUS_H
 
 # include "ftmlx_bonus.h"
 # include "mlx_bonus.h"

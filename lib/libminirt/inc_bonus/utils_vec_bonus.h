@@ -1,5 +1,5 @@
-#ifndef UTILS_VEC_H
-# define UTILS_VEC_H
+#ifndef UTILS_VEC_BONUS_H
+# define UTILS_VEC_BONUS_H
 # include <math.h>
 # include "datasheet_bonus.h"
 

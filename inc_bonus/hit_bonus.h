@@ -1,5 +1,5 @@
-#ifndef HIT_H
-# define HIT_H
+#ifndef HIT_BONUS_H
+# define HIT_BONUS_H
 
 # include "ray_bonus.h"
 # define EXPONENT 64
