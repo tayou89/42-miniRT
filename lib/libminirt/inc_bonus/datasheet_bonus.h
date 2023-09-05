@@ -121,7 +121,7 @@ typedef struct s_world
 	t_count		count;
 	t_ambient	ambient;
 	t_camera	camera;
-	t_light		light;
+	t_list		*light;
 	t_list		*obj;
 	t_viewport	viewport;
 }t_data;

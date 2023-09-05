@@ -52,12 +52,10 @@ static void	count_element(int identifier, t_data *data)
 		data->count.ambient++;
 	else if (identifier == CAMERA)
 		data->count.camera++;
-	else if (identifier == LIGHT)
-		data->count.light++;
 }
 
 static void	check_element_exception(t_count count, t_parsing *parsing)
 {
-	if (count.ambient > 1 || count.camera > 1 || count.light > 1)
+	if (count.ambient > 1 || count.camera > 1)
 		ft_parsing_error(DATA_ERROR, 0, parsing);
 }

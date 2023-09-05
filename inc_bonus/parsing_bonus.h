@@ -18,7 +18,7 @@
 
 # define AMBIENT_INFO_COUNT		2
 # define CAMERA_INFO_COUNT		3
-# define LIGHT_INFO_COUNT		2
+# define LIGHT_INFO_COUNT		3
 # define SPHERE_INFO_COUNT		3
 # define PLANE_INFO_COUNT		3
 # define CYLINDER_INFO_COUNT	5
