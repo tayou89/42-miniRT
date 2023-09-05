@@ -1,45 +1,124 @@
+# FLAGS
 NAME = miniRT
-CC = gcc
-CCFLAGS = -Wall -Wextra -Werror
-RM = rm
-RMFLAGS = -rf
-LIBFT = ./libft/libft.a
-LIBFT_DIR = ./libft
-COMMON_FILE = main
-PARSING_FILE = parse_data \
-			   parse_file parse_line \
-			   classify_element_information \
-			   ft_classify_non_object_info ft_classify_object_info \
-			   get_element_data \
-			   ft_get_non_object_data ft_get_object_data \
-			   ft_get_data ft_make_object_node ft_add_object_node \
-			   ft_parsing_util ft_check_range ft_get_number \
-			   ft_parsing_error ft_parsing_free ft_free_object_list print_data
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
+RM = rm -rf
 
-COMMON_SRC = $(addprefix ./common/, $(addsuffix .c, $(COMMON_FILE)))
-PARSING_SRC = $(addprefix ./parsing/, $(addsuffix .c, $(PARSING_FILE)))
-COMMON_OBJ = $(addprefix ./common/, $(addsuffix .o, $(COMMON_FILE)))
-PARSING_OBJ = $(addprefix ./parsing/, $(addsuffix .o, $(PARSING_FILE)))
+# PATH
+SRC_PATH = src/
+INC_PATH = inc/
+OBJ_PATH = obj/
+PARSING_PATH = parsing/
+VIEWPORT_PATH = viewport/
+BONUS_SRC_PATH = src_bonus/
+BONUS_INC_PATH = inc_bonus/
 
-all : $(NAME)
+# LIB PATH
+LIB_PATH = lib/
+LIBFT_PATH = $(LIB_PATH)libft/
+LIBRT_PATH = $(LIB_PATH)libminirt/
+MLX_PATH = $(LIB_PATH)minilibx_mms_20210621/
 
-clean : 
-	make -C $(LIBFT_DIR) clean
-	$(RM) $(RMFLAGS) $(COMMON_OBJ) $(PARSING_OBJ)
+# INC
+INC = -I$(INC_PATH)
+INC_LIBFT = -I$(LIBFT_PATH)$(INC_PATH)
+INC_LIBRT = -I$(LIBRT_PATH)$(INC_PATH)
+INC_MLX = -I$(MLX_PATH)
+BONUS_INC = -I$(BONUS_INC_PATH)
 
-fclean : clean
-	make -C $(LIBFT_DIR) fclean
-	$(RM) $(RMFLAGS) $(NAME)
+INC_ALL = $(INC) $(INC_LIBFT) $(INC_LIBRT) $(INC_MLX)
+BONUS_INC_ALL = $(BONUS_INC) $(INC_LIBFT) $(BONUS_INC_LIBRT) $(INC_MLX)
 
-re : fclean all
+# LINK
+LINK_MLX = -lmlx -L$(MLX_PATH)
+LINK_LIBFT = -lft -L$(LIBFT_PATH)
+LINK_LIBRT = -lminirt -L$(LIBRT_PATH)
 
-$(NAME) : $(LIBFT) $(COMMON_OBJ) $(PARSING_OBJ)
-	$(CC) $(CCFLAGS) -o $(NAME) $^
+LINK = $(LINK_LIBFT) $(LINK_LIBRT) $(LINK_MLX)
+BONUS_LINK = $(LINK_LIBFT) $(BONUS_LINK_LIBRT) $(LINK_MLX)
 
-$(LIBFT) : 
-	make bonus -C $(LIBFT_DIR) all
-			   
-%.o : %.c
-	$(CC) $(CCFLAGS) -o $@ -c $<
+PARSING_FILE_NAME = parse_data \
+					parse_file parse_line \
+					classify_element_information \
+					ft_classify_non_object_info ft_classify_object_info \
+					get_element_data \
+					ft_get_non_object_data ft_get_object_data \
+					ft_get_data ft_make_object_node \
+					ft_parsing_util ft_get_number ft_check_range \
+					ft_parsing_error ft_parsing_free ft_free_array\
+					ft_list
 
-.PHONY : all clean fclean re libft
+VIEWPORT_FILE_NAME = get_viewport_data \
+					 get_viewport_scala \
+					 get_viewport_vector \
+					 get_viewport_point
+
+PARSING_FILES = $(addprefix parsing/, $(addsuffix .c, $(PARSING_FILE_NAME)))
+VIEWPORT_FILES = $(addprefix viewport/, $(addsuffix .c, $(VIEWPORT_FILE_NAME)))
+
+# FILES
+SRC_FILES = main.c \
+			hook.c \
+			image.c \
+			initialize.c \
+			cylinder_disk.c \
+			cylinder_surface.c \
+			plane.c \
+			hit.c \
+			ray.c \
+			sphere.c \
+			phong_lighting.c \
+			$(PARSING_FILES) $(VIEWPORT_FILES)
+
+SRCS = $(addprefix $(SRC_PATH), $(SRC_FILES))
+OBJS = $(addprefix $(OBJ_PATH), $(SRC_FILES:.c=.o))
+BONUS_SRCS = $(addprefix $(BONUS_SRC_PATH), $(BONUS_SRC_FILES))
+BONUS_OBJS = $(addprefix $(OBJ_PATH), $(BONUS_SRC_FILES:.c=.o))
+
+$(OBJ_PATH)%.o : $(SRC_PATH)%.c
+	@test -d $(OBJ_PATH) || mkdir -p $(OBJ_PATH)
+	@test -d $(OBJ_PATH)$(PARSING_PATH) || mkdir -p $(OBJ_PATH)$(PARSING_PATH)
+	@test -d $(OBJ_PATH)$(VIEWPORT_PATH) || mkdir -p $(OBJ_PATH)$(VIEWPORT_PATH)
+	$(CC) $(CFLAGS) $(INC_ALL) -c -o $@ $<
+
+$(OBJ_PATH)%.o : $(BONUS_SRC_PATH)%.c
+	@test -d $(OBJ_PATH) || mkdir -p $(OBJ_PATH)
+	@test -d $(OBJ_PATH)$(PARSING_PATH) || mkdir -p $(OBJ_PATH)$(PARSING_PATH)
+	@test -d $(OBJ_PATH)$(VIEWPORT_PATH) || mkdir -p $(OBJ_PATH)$(VIEWPORT_PATH)
+	$(CC) $(CFLAGS) $(BONUS_INC_ALL) -c -o $@ $<
+
+all: $(NAME)
+
+$(NAME):
+	make -C $(LIB_PATH)
+	@install_name_tool -id $(MLX_PATH)libmlx.dylib $(MLX_PATH)libmlx.dylib
+	@make make_mandatory
+
+bonus:
+	make bonus -C $(LIB_PATH)
+	@install_name_tool -id $(MLX_PATH)libmlx.dylib $(MLX_PATH)libmlx.dylib
+	@make make_bonus
+
+make_mandatory: $(OBJS)
+	$(CC) $(CFLAGS) $(LINK) -o $(NAME) $(OBJS)
+	touch $@
+
+make_bonus: $(BONUS_OBJS)
+	$(CC) $(CFLAGS) $(BONUS_LINK) -o $(NAME) $(BONUS_OBJS)
+	touch $@
+
+clean:
+	make clean -C $(LIB_PATH)
+	$(RM) $(OBJ_PATH)
+	$(RM) make_mandatory
+	$(RM) make_bonus
+
+fclean: clean
+	make fclean -C $(LIB_PATH)
+	$(RM) $(NAME)
+
+re:
+	make fclean
+	make all
+
+.PHONY: $(NAME) all clean fclean re bonus
