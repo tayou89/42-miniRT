@@ -2,7 +2,7 @@
 # define INITIALIZE_BONUS_H
 
 # include "ftmlx_bonus.h"
-# include "mlx_bonus.h"
+# include "mlx.h"
 # include <stdio.h>
 
 # define WIN_WIDTH	1920
