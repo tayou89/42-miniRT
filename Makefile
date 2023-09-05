@@ -10,7 +10,6 @@ INC_PATH = inc/
 OBJ_PATH = obj/
 PARSING_PATH = parsing/
 VIEWPORT_PATH = viewport/
-RAY_TRACING_PATH = ray_tracing/
 BONUS_SRC_PATH = src_bonus/
 BONUS_INC_PATH = inc_bonus/
 
@@ -19,7 +18,6 @@ LIB_PATH = lib/
 LIBFT_PATH = $(LIB_PATH)libft/
 LIBRT_PATH = $(LIB_PATH)libminirt/
 MLX_PATH = $(LIB_PATH)minilibx_mms_20210621/
-BONUS_LIBRT_PATH = $(LIB_PATH)librt_bonus/
 
 # INC
 INC = -I$(INC_PATH)
@@ -27,7 +25,6 @@ INC_LIBFT = -I$(LIBFT_PATH)$(INC_PATH)
 INC_LIBRT = -I$(LIBRT_PATH)$(INC_PATH)
 INC_MLX = -I$(MLX_PATH)
 BONUS_INC = -I$(BONUS_INC_PATH)
-BONUS_INC_LIBRT = -I$(BONUS_LIBRT_PATH)
 
 INC_ALL = $(INC) $(INC_LIBFT) $(INC_LIBRT) $(INC_MLX)
 BONUS_INC_ALL = $(BONUS_INC) $(INC_LIBFT) $(BONUS_INC_LIBRT) $(INC_MLX)
@@ -36,7 +33,6 @@ BONUS_INC_ALL = $(BONUS_INC) $(INC_LIBFT) $(BONUS_INC_LIBRT) $(INC_MLX)
 LINK_MLX = -lmlx -L$(MLX_PATH)
 LINK_LIBFT = -lft -L$(LIBFT_PATH)
 LINK_LIBRT = -lminirt -L$(LIBRT_PATH)
-BONUS_LINK_LIBRT = -lrt -L$(BONUS_LIBRT_PATH)
 
 LINK = $(LINK_LIBFT) $(LINK_MLX) $(LINK_LIBRT)
 BONUS_LINK = $(LINK_LIBFT) $(BONUS_LINK_LIBRT) $(LINK_MLX)
@@ -57,12 +53,8 @@ VIEWPORT_FILE_NAME = get_viewport_data \
 					 get_viewport_vector \
 					 get_viewport_point
 
-RAY_TRACING_FILE_NAME = draw_image_by_ray_tracing \
-						get_primary_ray 
-
 PARSING_FILES = $(addprefix parsing/, $(addsuffix .c, $(PARSING_FILE_NAME)))
 VIEWPORT_FILES = $(addprefix viewport/, $(addsuffix .c, $(VIEWPORT_FILE_NAME)))
-RAY_TRACING_FILES = $(addprefix ray_tracing/, $(addsuffix .c, $(RAY_TRACING_FILE_NAME)))
 
 # FILES
 SRC_FILES = main.c \
@@ -76,9 +68,7 @@ SRC_FILES = main.c \
 			ray.c \
 			sphere.c \
 			phong_lighting.c \
-			$(PARSING_FILES) $(VIEWPORT_FILES) $(RAY_TRACING_FILES)
-
-BONUS_SRC_FILES = $(SRC_FILES:.c=_bonus.c)
+			$(PARSING_FILES) $(VIEWPORT_FILES)
 
 SRCS = $(addprefix $(SRC_PATH), $(SRC_FILES))
 OBJS = $(addprefix $(OBJ_PATH), $(SRC_FILES:.c=.o))
@@ -89,11 +79,12 @@ $(OBJ_PATH)%.o : $(SRC_PATH)%.c
 	@test -d $(OBJ_PATH) || mkdir -p $(OBJ_PATH)
 	@test -d $(OBJ_PATH)$(PARSING_PATH) || mkdir -p $(OBJ_PATH)$(PARSING_PATH)
 	@test -d $(OBJ_PATH)$(VIEWPORT_PATH) || mkdir -p $(OBJ_PATH)$(VIEWPORT_PATH)
-	@test -d $(OBJ_PATH)$(RAY_TRACING_PATH) || mkdir -p $(OBJ_PATH)$(RAY_TRACING_PATH)
-	$(CC) $(CFLAGS) $(INC_ALL) -c -o $@ $< -g
+	$(CC) $(CFLAGS) $(INC_ALL) -c -o $@ $<
 
 $(OBJ_PATH)%.o : $(BONUS_SRC_PATH)%.c
 	@test -d $(OBJ_PATH) || mkdir -p $(OBJ_PATH)
+	@test -d $(OBJ_PATH)$(PARSING_PATH) || mkdir -p $(OBJ_PATH)$(PARSING_PATH)
+	@test -d $(OBJ_PATH)$(VIEWPORT_PATH) || mkdir -p $(OBJ_PATH)$(VIEWPORT_PATH)
 	$(CC) $(CFLAGS) $(BONUS_INC_ALL) -c -o $@ $<
 
 all: $(NAME)

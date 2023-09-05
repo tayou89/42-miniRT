@@ -18,6 +18,5 @@ void	get_light_data(t_data *data, t_info *info, t_parsing *parsing)
 {
 	data->light.point = get_coordinate_data(info->coordinate, parsing);
 	data->light.ratio = get_ratio_data(info->ratio, parsing);
-	data->light.color = get_color_data(info->color, parsing);
-	data->light.color = vdiv_s(data->light.color, 255.0);
+	data->light.color = vset(1, 1, 1);
 }

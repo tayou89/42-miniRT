@@ -1,4 +1,4 @@
-#include "hit.h"
+#include "image.h"
 
 static int	is_shadow(t_rec *rec, t_data *data)
 {
