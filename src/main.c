@@ -3,7 +3,7 @@
 #include "datasheet.h"
 #include "parsing.h"
 #include "viewport.h"
-#include "ray_tracing.h"
+#include "image.h"
 
 int	main(int argc, char **argv)
 {
