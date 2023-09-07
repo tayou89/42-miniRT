@@ -52,26 +52,26 @@ static t_color	get_diffuse(t_rec *rec, t_light	*light)
 int	phong_lighting(t_rec *rec, t_data *data, t_ray ray)
 {
 	t_list	*light;
-	t_color	light_color;
+	t_color	l_color;
 	int		color;
 	double	shadow;
 
-	light_color = vset(0, 0, 0);
+	l_color = vset(0, 0, 0);
 	light = data->light;
 	while (light)
 	{
 		shadow = 1;
 		if (is_shadow(rec, light->element, data))
 			shadow = 0;
-		light_color = vadd_v(light_color, get_diffuse(rec, light->element));
-		light_color = vadd_v(light_color, get_specula(rec, light->element, ray));
-		light_color = vmul_s(light_color, ((t_light *)(light->element))->ratio * 2);
-		light_color = vmul_s(light_color, shadow);
+		l_color = vadd_v(l_color, get_diffuse(rec, light->element));
+		l_color = vadd_v(l_color, get_specula(rec, light->element, ray));
+		l_color = vmul_s(l_color, ((t_light *)(light->element))->ratio * 2);
+		l_color = vmul_s(l_color, shadow);
 		light = light->next;
 	}
-	light_color = vadd_v(light_color, get_ambient(&data->ambient));
-	light_color = vmin(vmul_v(light_color, rec->albedo), vset(1, 1, 1));
-	light_color = vmul_s(light_color, 255.999);
-	color = color_get_trgb(0x0, light_color.x, light_color.y, light_color.z);
+	l_color = vadd_v(l_color, get_ambient(&data->ambient));
+	l_color = vmin(vmul_v(l_color, rec->albedo), vset(1, 1, 1));
+	l_color = vmul_s(l_color, 255.999);
+	color = color_get_trgb(0x0, l_color.x, l_color.y, l_color.z);
 	return (color);
 }
