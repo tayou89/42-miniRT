@@ -62,9 +62,10 @@ int	phong_lighting(t_rec *rec, t_data *data)
 	{
 		shadow = 1;
 		if (is_shadow(rec, light->element, data))
-			shadow = SHADOW;
+			shadow = 0;
 		light_color = vadd_v(light_color, get_diffuse(rec, light->element));
 		light_color = vadd_v(light_color, get_specula(rec, light->element, data->camera));
+		light_color = vmul_s(light_color, ((t_light *)(light->element))->ratio * 2);
 		light_color = vmul_s(light_color, shadow);
 		light = light->next;
 	}

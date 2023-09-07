@@ -57,11 +57,12 @@ int	phong_lighting(t_rec *rec, t_data *data)
 
 	shadow = 1;
 	if (is_shadow(rec, data))
-		shadow = SHADOW;
+		shadow = 0;
 	light_color = vset(0, 0, 0);
 	light_color = vadd_v(light_color, get_diffuse(rec, data));
 	light_color = vadd_v(light_color, get_specula(rec, data));
 	light_color = vmul_s(light_color, shadow);
+	light_color = vmul_s(light_color, data->light.ratio * 2);
 	light_color = vadd_v(light_color, get_ambient(&data->ambient));
 	light_color = vmin(vmul_v(light_color, rec->albedo), vset(1, 1, 1));
 	light_color = vmul_s(light_color, 255.999);
