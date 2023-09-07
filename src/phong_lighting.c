@@ -20,7 +20,7 @@ static t_color	get_ambient(t_ambient *amb)
 	return (vmul_s(amb->color, amb->ratio));
 }
 
-static t_color	get_specula(t_rec *rec, t_data *data)
+static t_color	get_specula(t_rec *rec, t_data *data, t_ray ray)
 {
 	t_vec3	from_light;
 	t_vec3	to_view;
@@ -29,7 +29,7 @@ static t_color	get_specula(t_rec *rec, t_data *data)
 	double	t;
 
 	from_light = vunit(vsub_v(rec->intersect, data->light.point));
-	to_view = vunit(vmul_s(data->camera.normal, -1));
+	to_view = vunit(vmul_s(ray.dir, -1));
 	reflect = vsub_v(from_light, \
 				vmul_s(rec->normal, vdot(from_light, rec->normal) * 2.0));
 	t = pow(fmax(vdot(to_view, reflect), 0.0), EXPONENT);
@@ -49,7 +49,7 @@ static t_color	get_diffuse(t_rec *rec, t_data *data)
 	return (diffuse);
 }
 
-int	phong_lighting(t_rec *rec, t_data *data)
+int	phong_lighting(t_rec *rec, t_data *data, t_ray ray)
 {
 	t_color	light_color;
 	int		color;
@@ -60,7 +60,7 @@ int	phong_lighting(t_rec *rec, t_data *data)
 		shadow = 0;
 	light_color = vset(0, 0, 0);
 	light_color = vadd_v(light_color, get_diffuse(rec, data));
-	light_color = vadd_v(light_color, get_specula(rec, data));
+	light_color = vadd_v(light_color, get_specula(rec, data, ray));
 	light_color = vmul_s(light_color, shadow);
 	light_color = vmul_s(light_color, data->light.ratio * 2);
 	light_color = vadd_v(light_color, get_ambient(&data->ambient));

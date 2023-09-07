@@ -35,7 +35,7 @@ void	draw_image_by_ray_tracing(t_mlx *mlx, t_data *data)
 			rec.tmax = INFINITY;
 			primary_ray = get_primary_ray(data->camera, data->viewport, pixel);
 			if (hit_object(data, primary_ray, &rec))
-				color = phong_lighting(&rec, data);
+				color = phong_lighting(&rec, data, primary_ray);
 			put_pixel(mlx, pixel.point.x, pixel.point.y, color);
 			pixel.point.x++;
 		}
