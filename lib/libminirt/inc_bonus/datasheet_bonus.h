@@ -10,6 +10,7 @@ enum e_obj{
 	PLANE,
 	SPHERE,
 	CYLINDER,
+	CONE,
 	AMBIENT,
 	CAMERA,
 	LIGHT,
@@ -22,7 +23,6 @@ typedef struct s_count
 {
 	int	ambient;
 	int	camera;
-	int	light;
 }t_count;
 
 typedef struct s_vec3
@@ -62,6 +62,21 @@ typedef struct s_cylinder
 	double	radius2;
 	double	height;
 }t_cy;
+
+typedef struct s_cone
+{
+	t_point	center;
+	t_vec3	normal;
+	t_vec3	height_vector;
+	t_vec3	height_unit;
+	t_color	color;
+	t_point	top;
+	double	diameter;
+	double	radius;
+	double	radius2;
+	double	height;
+	double	cosine;
+}t_co;
 
 typedef struct s_ambient
 {

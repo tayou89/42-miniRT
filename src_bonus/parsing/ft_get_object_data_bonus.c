@@ -41,3 +41,17 @@ void	get_cylinder_data(t_data *data, t_info *info, t_parsing *parsing)
 		ft_parsing_error(MALLOC_ERROR, 1, parsing);
 	push_back(&data->obj, node);
 }
+
+void	get_cone_data(t_data *data, t_info *info, t_parsing *parsing)
+{
+	t_co	*new_cone;
+	t_list	*node;
+
+	new_cone = make_cone_node(info, parsing);
+	if (new_cone == (void *) 0)
+		ft_parsing_error(MALLOC_ERROR, 1, parsing);
+	node = create_node(new_cone, CONE);
+	if (node == NULL)
+		ft_parsing_error(MALLOC_ERROR, 1, parsing);
+	push_back(&data->obj, node);
+}

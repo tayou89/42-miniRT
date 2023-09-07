@@ -11,4 +11,6 @@ int	pl_hit(t_list *obj, t_ray ray, t_rec *rec);
 int	sp_hit(t_list *obj, t_ray ray, t_rec *rec);
 int	cy_hit(t_list *obj, t_ray ray, t_rec *rec);
 int	cy_hit_surface(t_cy *cy, t_ray ray, t_rec *rec);
+int	co_hit(t_list *obj, t_ray ray, t_rec *rec);
+int	co_hit_surface(t_co *co, t_ray ray, t_rec *rec);
 #endif

@@ -55,3 +55,27 @@ t_cy	*make_cylinder_node(t_info *info, t_parsing *parsing)
 					vmul_s(vinverse(cylinder->normal), cylinder->height / 2));
 	return (cylinder);
 }
+
+t_co	*make_cone_node(t_info *info, t_parsing *parsing)
+{
+	t_co	*cone;
+
+	cone = (t_co *) malloc(sizeof(t_co));
+	if (cone == (void *) 0)
+		ft_parsing_error(MALLOC_ERROR, 1, parsing);
+	cone->center = get_coordinate_data(info->coordinate, parsing);
+	cone->normal = vunit(get_vector_data(info->vector, parsing));
+	cone->color = get_color_data(info->color, parsing);
+	cone->color = vdiv_s(cone->color, 255.0);
+	cone->diameter = get_double(info->diameter, parsing);
+	cone->height = get_double(info->height, parsing);
+	if (cone->diameter <= 0 || cone->height <= 0)
+		ft_parsing_error(DATA_ERROR, 1, parsing);
+	cone->radius = cone->diameter / 2;
+	cone->radius2 = cone->radius * cone->radius;
+	cone->top = vadd_v(cone->center, vmul_s(cone->normal, cone->height));
+	cone->height_unit = vinverse(cone->normal);
+	cone->height_vector = vmul_s(cone->height_unit, cone->height);
+	cone->cosine = cone->height / sqrt(cone->radius2 + pow(cone->height, 2));
+	return (cone);
+}

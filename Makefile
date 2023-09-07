@@ -1,7 +1,7 @@
 # FLAGS
 NAME = miniRT
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 RM = rm -rf
 
 # PATH
@@ -72,7 +72,9 @@ SRC_FILES = main.c \
 			phong_lighting.c \
 			$(PARSING_FILES) $(VIEWPORT_FILES)
 
-BONUS_SRC_FILES = $(SRC_FILES:.c=_bonus.c)
+BONUS_SRC_FILES = cone_disk_bonus.c \
+				  cone_surface_bonus.c \
+				  $(SRC_FILES:.c=_bonus.c)
 
 SRCS = $(addprefix $(SRC_PATH), $(SRC_FILES))
 OBJS = $(addprefix $(OBJ_PATH), $(SRC_FILES:.c=.o))
