@@ -2,6 +2,7 @@
 # define HIT_BONUS_H
 
 # include "ray_bonus.h"
+# include "image_bonus.h"
 # define EXPONENT 64
 # define SHADOW 0.5
 # define SHINY 0.8

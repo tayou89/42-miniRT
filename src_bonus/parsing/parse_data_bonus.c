@@ -33,6 +33,8 @@ static void	initialize_data(t_parsing *parsing)
 	parsing->info.diameter = (void *) 0;
 	parsing->info.height = (void *) 0;
 	parsing->info.fov = (void *) 0;
+	parsing->info.width = (void *) 0;
+	parsing->info.length = (void *) 0;
 }
 
 static void	check_file_extension(char *file_name, t_parsing *parsing)

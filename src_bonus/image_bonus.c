@@ -42,3 +42,24 @@ void	draw_image_by_ray_tracing(t_mlx *mlx, t_data *data)
 		pixel.point.y++;
 	}
 }
+
+t_color	get_checker_color(const t_sp *sphere, t_point intersect)
+{
+	t_color		checker_color;
+	t_mapping	mapping;
+	int			width;
+	int			length;
+	int			round_sum;
+
+	intersect = vsub_v(intersect, sphere->center);
+	mapping.u = 0.5 + atan2(intersect.z, intersect.x) / M_PI;
+	mapping.v = 0.5 - asin(intersect.y / sphere->radius) / M_PI;
+	width = sphere->checker.width;
+	length = sphere->checker.length;
+	round_sum = (int) (round(width * mapping.u) + round(length * mapping.v));
+	if (round_sum % 2 == 0)
+		checker_color = sphere->checker.color_1;
+	else
+		checker_color = sphere->checker.color_2;
+	return (checker_color);
+}

@@ -19,5 +19,7 @@ void	get_element_data(t_info *info, t_parsing *parsing)
 		get_cylinder_data(&parsing->data, info, parsing);
 	else if (identifier == CONE)
 		get_cone_data(&parsing->data, info, parsing);
+	else if (identifier == CHECKER)
+		get_checker_data(&parsing->data, info, parsing);
 	free_info_data(info);
 }

@@ -11,6 +11,7 @@ enum e_obj{
 	SPHERE,
 	CYLINDER,
 	CONE,
+	CHECKER,
 	AMBIENT,
 	CAMERA,
 	LIGHT,
@@ -34,6 +35,15 @@ typedef struct s_vec3
 typedef t_vec3	t_point;
 typedef t_vec3	t_color;
 
+typedef struct s_checker
+{
+	int		exist;
+	int		width;
+	int		length;
+	t_color	color_1;
+	t_color	color_2;
+}t_ch;
+
 typedef struct s_sphere
 {
 	t_point	center;
@@ -41,6 +51,8 @@ typedef struct s_sphere
 	double	diameter;
 	double	radius;
 	double	radius2;
+	int		checker_exist;
+	t_ch	checker;
 }t_sp;
 
 typedef struct s_plane
@@ -150,6 +162,12 @@ typedef struct s_rec
 	double	tmin;
 	double	tmax;
 }t_rec;
+
+typedef	struct s_mapping
+{
+	double	u;
+	double	v;
+}t_mapping;
 
 int	double_equal(double x, double y);
 #endif

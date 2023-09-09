@@ -15,6 +15,7 @@ t_sp	*make_sphere_node(t_info *info, t_parsing *parsing)
 		ft_parsing_error(DATA_ERROR, 0, parsing);
 	sphere->radius = sphere->diameter / 2;
 	sphere->radius2 = sphere->radius * sphere->radius;
+	sphere->checker.exist = FALSE;
 	return (sphere);
 }
 
@@ -78,4 +79,31 @@ t_co	*make_cone_node(t_info *info, t_parsing *parsing)
 	cone->height_vector = vmul_s(cone->height_unit, cone->height);
 	cone->cosine = cone->height / sqrt(cone->radius2 + pow(cone->height, 2));
 	return (cone);
+}
+
+t_sp	*make_checker_node(t_info *info, t_parsing *parsing)
+{
+	t_sp	*sphere;
+
+	sphere = (t_sp *) malloc(sizeof(t_sp));
+	if (sphere == (void *) 0)
+		ft_parsing_error(MALLOC_ERROR, 1, parsing);
+	sphere->center = get_coordinate_data(info->coordinate, parsing);
+	sphere->diameter = get_double(info->diameter, parsing);
+	if (sphere->diameter <= 0)
+		ft_parsing_error(DATA_ERROR, 0, parsing);
+	sphere->radius = sphere->diameter / 2;
+	sphere->radius2 = sphere->radius * sphere->radius;
+	sphere->checker.exist = TRUE;
+	sphere->checker.width = get_integer(info->width, parsing);
+	if (sphere->checker.width <= 0 || sphere->checker.width > 100)
+		ft_parsing_error(DATA_ERROR, 0, parsing);
+	sphere->checker.length = get_integer(info->length, parsing);
+	if (sphere->checker.length <= 0 || sphere->checker.length > 100)
+		ft_parsing_error(DATA_ERROR, 0, parsing);
+	sphere->checker.color_1 = get_color_data(info->color, parsing);
+	sphere->checker.color_1 = vdiv_s(sphere->checker.color_1, 255.0);
+	sphere->checker.color_2 = get_color_data(info->vector, parsing);
+	sphere->checker.color_2 = vdiv_s(sphere->checker.color_2, 255.0);
+	return (sphere);
 }
