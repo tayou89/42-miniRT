@@ -56,7 +56,7 @@ t_color	get_checker_color(const t_sp *sphere, t_point intersect)
 	mapping.v = 0.5 - asin(intersect.y / sphere->radius) / M_PI;
 	width = sphere->checker.width;
 	length = sphere->checker.length;
-	round_sum = (int) (round(width * mapping.u) + round(length * mapping.v));
+	round_sum = (int)(round(width * mapping.u) + round(length * mapping.v));
 	if (round_sum % 2 == 0)
 		checker_color = sphere->checker.color_1;
 	else
