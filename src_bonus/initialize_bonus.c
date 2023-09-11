@@ -7,6 +7,7 @@ static void	init_ftmlx(t_mlx *mlx)
 	mlx->ptr.win_ptr = NULL;
 	mlx->ptr.img_ptr = NULL;
 	mlx->ptr.texture_ptr = NULL;
+	mlx->ptr.normal_ptr = NULL;
 	mlx->img.addr = NULL;
 	mlx->img.bits_per_pixel = 0;
 	mlx->img.size_line = 0;
@@ -35,7 +36,7 @@ static void	*set_ptr(t_mlx *mlx)
 	if (mlx->ptr.texture_ptr == NULL)
 		return (NULL);
 	mlx->ptr.normal_ptr = mlx_xpm_file_to_image(mlx->ptr.mlx_ptr, \
-		"./image/normal.xpm", &mlx->normal.width, &mlx->normal.height);
+		"./image/earth_normal.xpm", &mlx->normal.width, &mlx->normal.height);
 	if (mlx->ptr.normal_ptr == NULL)
 		return (NULL);
 	return (mlx);
