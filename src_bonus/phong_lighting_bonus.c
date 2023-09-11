@@ -1,6 +1,6 @@
 #include "image_bonus.h"
 
-static int	is_shadow(t_rec *rec, t_light *light, t_data *data)
+static double	get_shadow(t_rec *rec, t_light *light, t_data *data)
 {
 	t_rec	temp;
 	t_ray	ray;
@@ -11,8 +11,8 @@ static int	is_shadow(t_rec *rec, t_light *light, t_data *data)
 	temp.tmax = vlen(vsub_v(light->point, temp.intersect));
 	ray = ray_init(hitp, vsub_v(light->point, temp.intersect));
 	if (hit_object(data, ray, &temp))
-		return (TRUE);
-	return (FALSE);
+		return (0);
+	return (1);
 }
 
 static t_color	get_ambient(t_ambient *amb)
@@ -53,25 +53,24 @@ int	phong_lighting(t_rec *rec, t_data *data, t_ray ray)
 {
 	t_list	*light;
 	t_color	l_color;
+	t_color	total;
 	int		color;
-	double	shadow;
 
-	l_color = vset(0, 0, 0);
+	total = vinit();
 	light = data->light;
 	while (light)
 	{
-		shadow = 1;
-		if (is_shadow(rec, light->element, data))
-			shadow = 0;
+		l_color = vset(0, 0, 0);
 		l_color = vadd_v(l_color, get_diffuse(rec, light->element));
 		l_color = vadd_v(l_color, get_specula(rec, light->element, ray));
 		l_color = vmul_s(l_color, ((t_light *)(light->element))->ratio * 2);
-		l_color = vmul_s(l_color, shadow);
+		l_color = vmul_s(l_color, get_shadow(rec, light->element, data));
+		total = vadd_v(total, l_color);
 		light = light->next;
 	}
-	l_color = vadd_v(l_color, get_ambient(&data->ambient));
-	l_color = vmin(vmul_v(l_color, rec->albedo), vset(1, 1, 1));
-	l_color = vmul_s(l_color, 255.999);
-	color = color_get_trgb(0x0, l_color.x, l_color.y, l_color.z);
+	total = vadd_v(total, get_ambient(&data->ambient));
+	total = vmin(vmul_v(total, rec->albedo), vset(1, 1, 1));
+	total = vmul_s(total, 255.999);
+	color = color_get_trgb(0x0, total.x, total.y, total.z);
 	return (color);
 }
