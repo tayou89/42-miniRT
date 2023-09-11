@@ -74,6 +74,7 @@ SRC_FILES = main.c \
 
 BONUS_SRC_FILES = cone_disk_bonus.c \
 				  cone_surface_bonus.c \
+				  texture_bonus.c \
 				  $(SRC_FILES:.c=_bonus.c)
 
 SRCS = $(addprefix $(SRC_PATH), $(SRC_FILES))

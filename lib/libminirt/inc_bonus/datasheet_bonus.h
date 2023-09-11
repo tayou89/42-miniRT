@@ -161,9 +161,11 @@ typedef struct s_rec
 	double	t;
 	double	tmin;
 	double	tmax;
+	void	*texture;
+	void	*map;
 }t_rec;
 
-typedef	struct s_mapping
+typedef struct s_mapping
 {
 	double	u;
 	double	v;

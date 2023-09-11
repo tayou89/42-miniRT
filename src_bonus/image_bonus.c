@@ -24,11 +24,16 @@ void	draw_image_by_ray_tracing(t_mlx *mlx, t_data *data)
 	t_rec	rec;
 	int		color;
 
-	pixel.point.y = 0;
-	while (pixel.point.y < WIN_HEIGHT)
+	rec.texture = NULL;
+	if (mlx->ptr.texture_ptr != NULL && mlx->texture.info.addr != NULL)
+		rec.texture = &mlx->texture;
+	if (mlx->ptr.normal_ptr != NULL && mlx->normal.info.addr != NULL)
+		rec.map = &mlx->normal;
+	pixel.point.y = -1;
+	while (++pixel.point.y < WIN_HEIGHT)
 	{
-		pixel.point.x = 0;
-		while (pixel.point.x < WIN_WIDTH)
+		pixel.point.x = -1;
+		while (++pixel.point.x < WIN_WIDTH)
 		{
 			color = 0;
 			rec.tmin = 0;
@@ -37,9 +42,7 @@ void	draw_image_by_ray_tracing(t_mlx *mlx, t_data *data)
 			if (hit_object(data, primary_ray, &rec))
 				color = phong_lighting(&rec, data, primary_ray);
 			put_pixel(mlx, pixel.point.x, pixel.point.y, color);
-			pixel.point.x++;
 		}
-		pixel.point.y++;
 	}
 }
 

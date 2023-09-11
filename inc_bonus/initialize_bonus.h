@@ -20,4 +20,5 @@
 void	*init_all(t_mlx *mlx);
 int		hook_close(t_rt *scene);
 int		hook_keyup(int keycode, t_rt *scene);
+void	exit_program(t_rt *scene);
 #endif

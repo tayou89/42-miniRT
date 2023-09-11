@@ -9,6 +9,9 @@ static void	set_record(t_rec *rec, const t_sp *sp, t_ray ray)
 		rec->normal = vinverse(rec->normal);
 	if (sp->checker.exist == TRUE)
 		rec->albedo = get_checker_color(sp, rec->intersect);
+	else if (double_equal(sp->color.x + sp->color.y + sp->color.z, 0) \
+			&& rec->texture != NULL && rec->map != NULL)
+		rec->albedo = tex_get_color_value(rec, sp);
 	else
 		rec->albedo = sp->color;
 }
