@@ -5,11 +5,6 @@
 #include "viewport_bonus.h"
 #include "image_bonus.h"
 
-void	leaks(void)
-{
-	system("leaks miniRT");
-}
-
 int	main(int argc, char **argv)
 {
 	t_rt	scene;
