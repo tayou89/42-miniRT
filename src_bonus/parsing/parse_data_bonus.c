@@ -22,6 +22,7 @@ static void	initialize_data(t_parsing *parsing)
 {
 	parsing->data.count.ambient = 0;
 	parsing->data.count.camera = 0;
+	parsing->data.count.light = 0;
 	parsing->data.obj = (void *) 0;
 	parsing->data.light = (void *) 0;
 	parsing->file.line = (void *) 0;

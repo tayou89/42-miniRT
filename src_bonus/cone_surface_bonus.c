@@ -2,18 +2,14 @@
 
 static int		get_ray_size(double *size, t_ray ray, t_co *cone, t_rec *rec);
 static t_vec3	get_quadratic_formula_coefficient(t_ray ray, t_co *cone);
-static int		check_contact_on_surface(t_point contact, t_co *cone);
+static int		check_validation(double t, t_ray ray, t_rec *rec, t_co *cone);
 static void		set_record(t_rec *rec, t_co *cone, t_ray ray, double ray_size);
 
 int	co_hit_surface(t_co *cone, t_ray ray, t_rec *rec)
 {
 	double	ray_size;
-	t_point	contact;
 
 	if (get_ray_size(&ray_size, ray, cone, rec) == FALSE)
-		return (FALSE);
-	contact = ray_at(ray, ray_size);
-	if (check_contact_on_surface(contact, cone) == FALSE)
 		return (FALSE);
 	set_record(rec, cone, ray, ray_size);
 	return (TRUE);
@@ -33,10 +29,10 @@ static int	get_ray_size(double *size, t_ray ray, t_co *cone, t_rec *rec)
 		&& cone->cosine == fabs(vdot(ray.dir, cone->height_unit)))
 		return (FALSE);
 	ray_size = (-coefficient.y - sqrt(discriminant)) / coefficient.x;
-	if (ray_size < rec->tmin || ray_size > rec->tmax)
+	if (check_validation(ray_size, ray, rec, cone) == FALSE)
 	{
 		ray_size = (-coefficient.y + sqrt(discriminant)) / coefficient.x;
-		if (ray_size < rec->tmin || ray_size > rec->tmax)
+		if (check_validation(ray_size, ray, rec, cone) == FALSE)
 			return (FALSE);
 	}
 	*size = ray_size;
@@ -66,14 +62,18 @@ static t_vec3	get_quadratic_formula_coefficient(t_ray ray, t_co *cone)
 	return (coefficient);
 }
 
-static int	check_contact_on_surface(t_point contact, t_co *cone)
+static int	check_validation(double t, t_ray ray, t_rec *rec, t_co *cone)
 {
+	t_point	contact;
 	t_vec3	top_to_contact;
 	double	contact_height;
 
+	contact = ray_at(ray, t);
 	top_to_contact = vsub_v(contact, cone->top);
 	contact_height = vdot(top_to_contact, cone->height_unit);
-	if (double_equal(contact_height, 0) == FALSE && contact_height < 0)
+	if (t < rec->tmin || t > rec->tmax)
+		return (FALSE);
+	else if (double_equal(contact_height, 0) == FALSE && contact_height < 0)
 		return (FALSE);
 	else if (contact_height > cone->height)
 		return (FALSE);

@@ -74,9 +74,10 @@ t_co	*make_cone_node(t_info *info, t_parsing *parsing)
 		ft_parsing_error(DATA_ERROR, 1, parsing);
 	cone->radius = cone->diameter / 2;
 	cone->radius2 = cone->radius * cone->radius;
-	cone->top = vadd_v(cone->center, vmul_s(cone->normal, cone->height));
+	cone->top = vadd_v(cone->center, vmul_s(cone->normal, cone->height / 2.0));
 	cone->height_unit = vinverse(cone->normal);
 	cone->height_vector = vmul_s(cone->height_unit, cone->height);
+	cone->disk_center = vadd_v(cone->center, vmul_s(cone->height_vector, 0.5));
 	cone->cosine = cone->height / sqrt(cone->radius2 + pow(cone->height, 2));
 	return (cone);
 }

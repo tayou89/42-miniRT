@@ -60,6 +60,8 @@ static void	count_element(int identifier, t_data *data)
 		data->count.ambient++;
 	else if (identifier == CAMERA)
 		data->count.camera++;
+	else if (identifier == LIGHT)
+		data->count.light++;
 }
 
 static void	check_element_exception(t_count count, t_parsing *parsing)

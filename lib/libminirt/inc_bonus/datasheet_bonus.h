@@ -24,6 +24,7 @@ typedef struct s_count
 {
 	int	ambient;
 	int	camera;
+	int	light;
 }t_count;
 
 typedef struct s_vec3
@@ -78,6 +79,7 @@ typedef struct s_cylinder
 typedef struct s_cone
 {
 	t_point	center;
+	t_point	disk_center;
 	t_vec3	normal;
 	t_vec3	height_vector;
 	t_vec3	height_unit;
@@ -115,12 +117,6 @@ typedef struct s_ray
 	t_point	orig;
 	t_vec3	dir;
 }t_ray;
-
-typedef struct s_pixel
-{
-	t_point	point;
-	t_color	color;
-}t_pixel;
 
 typedef struct s_viewport
 {
