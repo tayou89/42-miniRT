@@ -1,10 +1,14 @@
 #include <stdlib.h>
 #include "initialize_bonus.h"
 
-static void	exit_program(t_rt *scene)
+void	exit_program(t_rt *scene)
 {
 	free_list(scene->data->obj);
 	mlx_destroy_image(scene->mlx->ptr.mlx_ptr, scene->mlx->ptr.img_ptr);
+	if (scene->mlx->ptr.texture_ptr != NULL)
+		mlx_destroy_image(scene->mlx->ptr.mlx_ptr, scene->mlx->ptr.texture_ptr);
+	if (scene->mlx->ptr.normal_ptr != NULL)
+		mlx_destroy_image(scene->mlx->ptr.mlx_ptr, scene->mlx->ptr.normal_ptr);
 	mlx_destroy_window(scene->mlx->ptr.mlx_ptr, scene->mlx->ptr.win_ptr);
 	exit(0);
 }

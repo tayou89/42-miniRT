@@ -7,7 +7,13 @@ static void	set_record(t_rec *rec, const t_sp *sp, t_ray ray)
 	rec->normal = vunit(vsub_v(rec->intersect, sp->center));
 	if (vdot(rec->normal, ray.dir) > 0)
 		rec->normal = vinverse(rec->normal);
-	rec->albedo = sp->color;
+	if (sp->checker.exist == TRUE)
+		rec->albedo = get_checker_color(sp, rec->intersect);
+	else if (double_equal(sp->color.x + sp->color.y + sp->color.z, 0) \
+			&& rec->texture != NULL && rec->map != NULL)
+		rec->albedo = tex_get_color_value(rec, sp);
+	else
+		rec->albedo = sp->color;
 }
 
 static t_vec3	get_coef(t_vec3 osubc, t_ray ray, const t_sp *sp)

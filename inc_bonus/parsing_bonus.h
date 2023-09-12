@@ -18,13 +18,15 @@
 
 # define AMBIENT_INFO_COUNT		2
 # define CAMERA_INFO_COUNT		3
-# define LIGHT_INFO_COUNT		2
+# define LIGHT_INFO_COUNT		3
 # define SPHERE_INFO_COUNT		3
 # define PLANE_INFO_COUNT		3
 # define CYLINDER_INFO_COUNT	5
+# define CONE_INFO_COUNT		5
 # define COLOR_INFO_COUNT		3
 # define COORDINATE_INFO_COUNT	3
 # define VECTOR_INFO_COUNT		3
+# define CHECKER_INFO_COUNT		6
 
 typedef struct s_info
 {
@@ -35,6 +37,8 @@ typedef struct s_info
 	char	*ratio;
 	char	*diameter;
 	char	*height;
+	char	*width;
+	char	*length;
 	char	*fov;
 }	t_info;
 
@@ -68,6 +72,8 @@ void	classify_light_information(char **info, t_parsing *parsing);
 void	classify_sphere_information(char **info, t_parsing *parsing);
 void	classify_plane_information(char **info, t_parsing *parsing);
 void	classify_cylinder_information(char **info, t_parsing *parsing);
+void	classify_cone_information(char **info, t_parsing *parsing);
+void	classify_checker_information(char **info, t_parsing *parsing);
 
 void	get_element_data(t_info *info, t_parsing *parsing);
 void	get_ambient_data(t_data *data, t_info *info, t_parsing *parsing);
@@ -76,6 +82,8 @@ void	get_light_data(t_data *data, t_info *info, t_parsing *parsing);
 void	get_sphere_data(t_data *data, t_info *info, t_parsing *parsing);
 void	get_plane_data(t_data *data, t_info *info, t_parsing *parsing);
 void	get_cylinder_data(t_data *data, t_info *info, t_parsing *parsing);
+void	get_cone_data(t_data *data, t_info *info, t_parsing *parsing);
+void	get_checker_data(t_data *data, t_info *info, t_parsing *parsing);
 
 double	get_ratio_data(char *string, t_parsing *parsing);
 int		get_fov_data(char *string, t_parsing *parsing);
@@ -86,6 +94,8 @@ t_point	get_coordinate_data(char **string, t_parsing *parsing);
 t_sp	*make_sphere_node(t_info *info, t_parsing *parsing);
 t_pl	*make_plane_node(t_info *info, t_parsing *parsing);
 t_cy	*make_cylinder_node(t_info *info, t_parsing *parsing);
+t_co	*make_cone_node(t_info *info, t_parsing *parsing);
+t_sp	*make_checker_node(t_info *info, t_parsing *parsing);
 
 int		get_integer(char *string, t_parsing *parsing);
 double	get_double(char *string, t_parsing *parsing);

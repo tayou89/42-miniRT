@@ -5,13 +5,15 @@ static void	set_hit_func(int (*hit_func[])(t_list *, t_ray, t_rec *))
 	hit_func[PLANE] = pl_hit;
 	hit_func[SPHERE] = sp_hit;
 	hit_func[CYLINDER] = cy_hit;
+	hit_func[CONE] = co_hit;
+	hit_func[CHECKER] = sp_hit;
 }
 
 int	hit_object(t_data *data, t_ray primary, t_rec *rec)
 {
 	t_list	*world;
 	int		is_hit;
-	int		(*hit_func[3])(t_list *, t_ray, t_rec *);
+	int		(*hit_func[5])(t_list *, t_ray, t_rec *);
 
 	set_hit_func(hit_func);
 	world = data->obj;

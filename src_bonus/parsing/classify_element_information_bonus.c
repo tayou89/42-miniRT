@@ -22,6 +22,10 @@ void	classify_element_information(char *line, t_parsing *parsing)
 		classify_plane_information(&parsing->line.info[1], parsing);
 	else if (parsing->info.identifier == CYLINDER)
 		classify_cylinder_information(&parsing->line.info[1], parsing);
+	else if (parsing->info.identifier == CONE)
+		classify_cone_information(&parsing->line.info[1], parsing);
+	else if (parsing->info.identifier == CHECKER)
+		classify_checker_information(&parsing->line.info[1], parsing);
 	parsing->line.info = free_2d_array((void *) parsing->line.info);
 }
 
@@ -42,6 +46,10 @@ static void	get_identifier(char *identifier, t_parsing *parsing)
 		parsing->info.identifier = PLANE;
 	else if (ft_strncmp("cy", identifier, identifier_size) == 0)
 		parsing->info.identifier = CYLINDER;
+	else if (ft_strncmp("co", identifier, identifier_size) == 0)
+		parsing->info.identifier = CONE;
+	else if (ft_strncmp("ch", identifier, identifier_size) == 0)
+		parsing->info.identifier = CHECKER;
 	else
 		ft_parsing_error(DATA_ERROR, 0, parsing);
 }
@@ -58,6 +66,6 @@ static void	count_element(int identifier, t_data *data)
 
 static void	check_element_exception(t_count count, t_parsing *parsing)
 {
-	if (count.ambient > 1 || count.camera > 1 || count.light > 1)
+	if (count.ambient > 1 || count.camera > 1)
 		ft_parsing_error(DATA_ERROR, 0, parsing);
 }

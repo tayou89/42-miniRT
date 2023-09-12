@@ -4,12 +4,14 @@
 
 # define TRUE 1
 # define FALSE 0
-# define EPSILON 1e-12
+# define EPSILON 1e-6
 
 enum e_obj{
 	PLANE,
 	SPHERE,
 	CYLINDER,
+	CONE,
+	CHECKER,
 	AMBIENT,
 	CAMERA,
 	LIGHT,
@@ -34,6 +36,15 @@ typedef struct s_vec3
 typedef t_vec3	t_point;
 typedef t_vec3	t_color;
 
+typedef struct s_checker
+{
+	int		exist;
+	int		width;
+	int		length;
+	t_color	color_1;
+	t_color	color_2;
+}t_ch;
+
 typedef struct s_sphere
 {
 	t_point	center;
@@ -41,6 +52,8 @@ typedef struct s_sphere
 	double	diameter;
 	double	radius;
 	double	radius2;
+	int		checker_exist;
+	t_ch	checker;
 }t_sp;
 
 typedef struct s_plane
@@ -62,6 +75,22 @@ typedef struct s_cylinder
 	double	radius2;
 	double	height;
 }t_cy;
+
+typedef struct s_cone
+{
+	t_point	center;
+	t_point	disk_center;
+	t_vec3	normal;
+	t_vec3	height_vector;
+	t_vec3	height_unit;
+	t_color	color;
+	t_point	top;
+	double	diameter;
+	double	radius;
+	double	radius2;
+	double	height;
+	double	cosine;
+}t_co;
 
 typedef struct s_ambient
 {
@@ -89,12 +118,6 @@ typedef struct s_ray
 	t_vec3	dir;
 }t_ray;
 
-typedef struct s_pixel
-{
-	t_point	point;
-	t_color	color;
-}t_pixel;
-
 typedef struct s_viewport
 {
 	double	width;
@@ -121,7 +144,7 @@ typedef struct s_world
 	t_count		count;
 	t_ambient	ambient;
 	t_camera	camera;
-	t_light		light;
+	t_list		*light;
 	t_list		*obj;
 	t_viewport	viewport;
 }t_data;
@@ -134,7 +157,15 @@ typedef struct s_rec
 	double	t;
 	double	tmin;
 	double	tmax;
+	void	*texture;
+	void	*map;
 }t_rec;
+
+typedef struct s_mapping
+{
+	double	u;
+	double	v;
+}t_mapping;
 
 int	double_equal(double x, double y);
 #endif

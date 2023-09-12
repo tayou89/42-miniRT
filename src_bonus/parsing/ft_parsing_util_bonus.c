@@ -35,9 +35,11 @@ void	check_information_count(char **string, int type, t_parsing *parsing)
 		|| (type == SPHERE && information_count != SPHERE_INFO_COUNT)
 		|| (type == PLANE && information_count != PLANE_INFO_COUNT)
 		|| (type == CYLINDER && information_count != CYLINDER_INFO_COUNT)
+		|| (type == CONE && information_count != CONE_INFO_COUNT)
 		|| (type == COLOR && information_count != COLOR_INFO_COUNT)
 		|| (type == COORDINATE && information_count != COORDINATE_INFO_COUNT)
-		|| (type == VECTOR && information_count != VECTOR_INFO_COUNT))
+		|| (type == VECTOR && information_count != VECTOR_INFO_COUNT)
+		|| (type == CHECKER && information_count != CHECKER_INFO_COUNT))
 		ft_parsing_error(DATA_ERROR, 0, parsing);
 }
 
