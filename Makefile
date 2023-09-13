@@ -46,7 +46,7 @@ PARSING_FILE_NAME = parse_data \
 					get_element_data \
 					ft_get_non_object_data ft_get_object_data \
 					ft_get_data ft_make_object_node \
-					ft_parsing_util ft_get_number ft_check_range \
+					ft_parsing_util ft_get_integer ft_get_double ft_check_range \
 					ft_parsing_error ft_parsing_free ft_free_array\
 					ft_list
 

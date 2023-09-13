@@ -7,7 +7,6 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <errno.h>
 # include <string.h>
 
 # define ARGC_ERROR				0
@@ -27,6 +26,8 @@
 # define COORDINATE_INFO_COUNT	3
 # define VECTOR_INFO_COUNT		3
 # define CHECKER_INFO_COUNT		6
+
+# define DOUBLE_DIGIT_MAX		15
 
 typedef struct s_info
 {
