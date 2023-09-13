@@ -6,7 +6,7 @@
 /*   By: jhwang <jhwang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 18:38:41 by jhwang            #+#    #+#             */
-/*   Updated: 2023/09/13 18:38:41 by jhwang           ###   ########.fr       */
+/*   Updated: 2023/09/13 22:57:07 by jhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ t_ray	get_primary_ray(t_camera camera, t_viewport viewport, t_pixel pixel)
 	t_ray	primary_ray;
 	t_point	target_point;
 
-	primary_ray.orig = camera.view_point;
 	target_point = get_target_point(viewport, pixel);
-	primary_ray.dir = vunit(vsub_v(target_point, primary_ray.orig));
+	primary_ray.orig = target_point;
+	primary_ray.dir = vunit(vsub_v(target_point, camera.view_point));
 	return (primary_ray);
 }
 
