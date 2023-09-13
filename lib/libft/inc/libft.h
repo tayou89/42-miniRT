@@ -6,7 +6,7 @@
 /*   By: jhwang <jhwang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 00:22:28 by tayou             #+#    #+#             */
-/*   Updated: 2023/09/13 18:33:28 by tayou            ###   ########.fr       */
+/*   Updated: 2023/09/13 19:38:57 by jhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ char	*ft_strdup(const char *s1);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	**ft_split(char const *s, char c);
-char	*get_next_line(int fd);
-
+char	*get_next_line(int fd, int flag);
+char	*free_backup(char *backup);
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: jhwang <jhwang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 05:42:51 by tayou             #+#    #+#             */
-/*   Updated: 2023/04/07 15:26:16 by tayou            ###   ########.fr       */
+/*   Updated: 2023/09/13 19:38:34 by jhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,13 +106,15 @@ static char	*renewal_backup(char *backup)
 	return (backup);
 }
 
-char	*get_next_line(int fd)
+char	*get_next_line(int fd, int flag)
 {
 	static char	*backup;
 	char		*buf;
 	char		*line;
 	int			read_size;
 
+	if (flag)
+		return (free_backup(backup));
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
 	buf = NULL;
@@ -122,12 +124,10 @@ char	*get_next_line(int fd)
 	if (read_size == -1 && backup != NULL)
 	{
 		free(backup);
-		backup = NULL;
 		return (NULL);
 	}
 	backup = get_backup(buf, backup, read_size, fd);
 	free(buf);
-	buf = NULL;
 	if (backup == NULL)
 		return (NULL);
 	line = get_line(line, backup);

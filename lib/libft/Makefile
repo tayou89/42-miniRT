@@ -22,7 +22,8 @@ SRC_FILES = ft_isdigit.c \
 			ft_strlen.c \
 			ft_strncmp.c \
 			ft_substr.c \
-			get_next_line.c
+			get_next_line.c \
+			get_next_line_utils.c
 
 SRCS = $(addprefix $(SRC_PATH), $(SRC_FILES))
 OBJS = $(addprefix $(OBJ_PATH), $(SRC_FILES:.c=.o))

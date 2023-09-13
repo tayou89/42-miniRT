@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parsing_error_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: jhwang <jhwang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 18:31:33 by tayou             #+#    #+#             */
-/*   Updated: 2023/09/13 18:31:35 by tayou            ###   ########.fr       */
+/*   Updated: 2023/09/13 19:35:25 by jhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	ft_parsing_error(int error_number, int exit_number, t_parsing *parsing)
 {
 	char	*error_message;
 
+	get_next_line(0, 1);
 	error_message = get_error_message(error_number);
 	printf("Error\n");
 	if (error_message == (void *) 0)
