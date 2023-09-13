@@ -6,7 +6,7 @@
 /*   By: jhwang <jhwang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 18:39:14 by jhwang            #+#    #+#             */
-/*   Updated: 2023/09/13 18:39:15 by jhwang           ###   ########.fr       */
+/*   Updated: 2023/09/13 22:54:31 by jhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 void	exit_program(t_rt *scene)
 {
 	free_list(scene->data->obj);
+	free_list(scene->data->light);
 	mlx_destroy_image(scene->mlx->ptr.mlx_ptr, scene->mlx->ptr.img_ptr);
 	if (scene->mlx->ptr.texture_ptr != NULL)
 		mlx_destroy_image(scene->mlx->ptr.mlx_ptr, scene->mlx->ptr.texture_ptr);
