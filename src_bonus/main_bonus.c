@@ -6,14 +6,10 @@
 /*   By: jhwang <jhwang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 18:39:24 by jhwang            #+#    #+#             */
-/*   Updated: 2023/09/13 18:39:25 by jhwang           ###   ########.fr       */
+/*   Updated: 2023/09/13 18:47:39 by jhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "initialize_bonus.h"
-#include "datasheet_bonus.h"
-#include "parsing_bonus.h"
 #include "viewport_bonus.h"
 #include "image_bonus.h"
 

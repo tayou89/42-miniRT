@@ -6,14 +6,14 @@
 /*   By: jhwang <jhwang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 18:38:16 by jhwang            #+#    #+#             */
-/*   Updated: 2023/09/13 18:38:16 by jhwang           ###   ########.fr       */
+/*   Updated: 2023/09/13 18:48:20 by jhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "initialize.h"
 
-static void	exit_program(t_rt *scene)
+void	exit_program(t_rt *scene)
 {
 	free_list(scene->data->obj);
 	mlx_destroy_image(scene->mlx->ptr.mlx_ptr, scene->mlx->ptr.img_ptr);

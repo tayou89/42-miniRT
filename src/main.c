@@ -6,14 +6,10 @@
 /*   By: jhwang <jhwang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 18:38:30 by jhwang            #+#    #+#             */
-/*   Updated: 2023/09/13 18:38:31 by jhwang           ###   ########.fr       */
+/*   Updated: 2023/09/13 18:47:35 by jhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "initialize.h"
-#include "datasheet.h"
-#include "parsing.h"
 #include "viewport.h"
 #include "image.h"
 
