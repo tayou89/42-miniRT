@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   classify_element_information_bonus.c               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/13 18:30:47 by tayou             #+#    #+#             */
+/*   Updated: 2023/09/13 18:30:49 by tayou            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parsing_bonus.h"
 
 static void	get_identifier(char *identifier, t_parsing *parsing);

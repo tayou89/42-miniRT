@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_classify_object_info_bonus.c                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/13 18:30:55 by tayou             #+#    #+#             */
+/*   Updated: 2023/09/13 18:30:59 by tayou            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parsing_bonus.h"
 
 void	classify_sphere_information(char **info, t_parsing *parsing)

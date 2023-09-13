@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_classify_non_object_info_bonus.c                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/13 18:30:53 by tayou             #+#    #+#             */
+/*   Updated: 2023/09/13 18:30:54 by tayou            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parsing_bonus.h"
 
 void	classify_ambient_information(char **info, t_parsing *parsing)

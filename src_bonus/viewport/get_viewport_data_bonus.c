@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_viewport_data_bonus.c                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/13 18:32:03 by tayou             #+#    #+#             */
+/*   Updated: 2023/09/13 18:32:05 by tayou            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "viewport_bonus.h"
 
 static void	get_viewport_initial_data(t_viewport *viewport, t_camera camera);
