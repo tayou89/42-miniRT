@@ -6,7 +6,7 @@
 /*   By: jhwang <jhwang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 18:39:27 by jhwang            #+#    #+#             */
-/*   Updated: 2023/09/13 18:39:28 by jhwang           ###   ########.fr       */
+/*   Updated: 2023/09/14 16:44:41 by jhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ static t_color	get_specula(t_rec *rec, t_light *light, t_ray ray)
 	t_color	specula;
 	double	t;
 
-	from_light = vunit(vsub_v(rec->intersect, light->point));
+	from_light = vunit(vsub_v(light->point, rec->intersect));
 	to_view = vunit(vmul_s(ray.dir, -1));
-	reflect = vsub_v(from_light, \
-				vmul_s(rec->normal, vdot(from_light, rec->normal) * 2.0));
+	reflect = vsub_v(vmul_s(rec->normal, vdot(from_light, rec->normal) * 2.0), \
+					from_light);
 	t = pow(fmax(vdot(to_view, reflect), 0.0), EXPONENT);
 	specula = vmul_s(vmul_s(light->color, SHINY), t);
 	return (specula);
