@@ -6,7 +6,7 @@
 /*   By: jhwang <jhwang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 18:37:15 by jhwang            #+#    #+#             */
-/*   Updated: 2023/09/13 18:37:17 by jhwang           ###   ########.fr       */
+/*   Updated: 2023/09/14 17:30:49 by jhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 # define TRUE 1
 # define FALSE 0
-# define EPSILON 1e-9
+# define EPSILON 1e-6
 
 enum e_obj{
 	PLANE,
