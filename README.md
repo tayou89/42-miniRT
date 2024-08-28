@@ -4,6 +4,9 @@
 
 This project is an implementation of a simple ray tracer using the miniLibX library. It's capable of rendering basic 3D scenes described in .rt files.
 
+For more detailed information about the project requirements and specifications, please refer to the [subject.pdf](./requirements/subject.pdf).
+
+
 ## Compilation
 
 This project uses a Makefile for compilation. Here are the main commands:
