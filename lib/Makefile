@@ -4,12 +4,12 @@ all: $(NAME)
 
 $(NAME):
 	make -C libft/
-	make -C minilibx_mms_20210621/
+	make -C minilibx/
 	make -C libminirt/
 
 bonus:
 	make -C libft/
-	make -C minilibx_mms_20210621/
+	make -C minilibx/
 	make bonus -C libminirt/
 
 clean:
@@ -19,7 +19,7 @@ clean:
 fclean:
 	make fclean -C libft/
 	make fclean -C libminirt/
-	make clean -C minilibx_mms_20210621/
+	make clean -C minilibx/
 
 re:
 	make fclean

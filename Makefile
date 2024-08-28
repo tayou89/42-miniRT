@@ -17,7 +17,7 @@ BONUS_INC_PATH = inc_bonus/
 LIB_PATH = lib/
 LIBFT_PATH = $(LIB_PATH)libft/
 LIBRT_PATH = $(LIB_PATH)libminirt/
-MLX_PATH = $(LIB_PATH)minilibx_mms_20210621/
+MLX_PATH = $(LIB_PATH)minilibx/
 
 # INC
 INC = -I$(INC_PATH)
